@@ -9,23 +9,30 @@ body {
 
 .searchBar {
   position: relative;
-  text-align: center;
-  border:  2px solid black;
-  width: 500px;
-  height: 36px;
-  margin: auto;  
+  display: inline-flex;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 400px;
+  height: 24px;
+  margin: auto;
 }
 
 .searchString {
-  position: absolute;
-    margin: 5px 16px 5px 16px;
-    width: 324px;
-     height: 24px;
+  font-family:  'Press Start 2P', Arial, Helvetica, sans-serif;
+  border: hidden;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  margin: 0px;
+  width: 360px;
+  height: 24px;
 }
 
 .searchButton {
-  padding-left: 5px;
-  margin: 5px 16px 5px 16px;
+  border: hidden;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0px;
+  margin: 0px 10px 0px 5px;
   width: 24px;
   height: 24px;
 }
