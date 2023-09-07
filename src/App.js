@@ -6,6 +6,9 @@ function App() {
   return (
     <div className="App">
       <SearchBar/>
+      <div id='location'>
+        Moscow
+      </div>
       <Temperature/>
     </div>
   );

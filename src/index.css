@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.searchBar {
-  position: relative;
+#searchBar {
+  position: sticky;
   display: inline-flex;
   border: 2px solid black;
   border-radius: 10px;
@@ -17,8 +17,9 @@ body {
   margin: auto;
 }
 
-.searchString {
-  font-family:  'Press Start 2P', Arial, Helvetica, sans-serif;
+#searchString {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 20px;
   border: hidden;
   background-color: white;
   border-radius: 0px 10px 10px 0px;
@@ -27,7 +28,7 @@ body {
   height: 24px;
 }
 
-.searchButton {
+#searchButton {
   border: hidden;
   background-color: white;
   border-radius: 10px;
@@ -35,4 +36,26 @@ body {
   margin: 0px 10px 0px 5px;
   width: 24px;
   height: 24px;
+}
+
+#location {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 70px;
+  margin: 50px 0px 20px;
+}
+
+.temperature {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-color: #000;
+}
+.sunImg {
+}
+
+.degree {
+  color: #000;
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 150px;
+  margin: 50px 0px;
 }
