@@ -1,15 +1,18 @@
-import './App.css';
+import ForecastDays from './components/ForecastDays';
+import ForecastHours from './components/ForecastHours';
 import SearchBar from './components/SearchBar';
 import Temperature from './components/Temperature';
 
 function App() {
   return (
-    <div className="App">
+    <div id="App">
       <SearchBar/>
       <div id='location'>
         Moscow
       </div>
+        <ForecastDays/>
       <Temperature/>
+      <ForecastHours/>
     </div>
   );
 }

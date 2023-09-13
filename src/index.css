@@ -1,25 +1,35 @@
 body {
   position: relative;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#searchBar {
+#App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBar form{  
+  position: absolute;
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 20px;
   position: sticky;
   display: inline-flex;
   border: 2px solid black;
   border-radius: 10px;
   width: 400px;
-  height: 24px;
+  height: auto;
   margin: auto;
+  box-shadow: 3px 3px 2px;
 }
 
-#searchString {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 20px;
+.searchBar input {
   border: hidden;
   background-color: white;
   border-radius: 0px 10px 10px 0px;
@@ -28,14 +38,34 @@ body {
   height: 24px;
 }
 
-#searchButton {
+.searchBar button {
   border: hidden;
-  background-color: white;
+  background: transparent;
   border-radius: 10px;
   padding: 0px;
   margin: 0px 10px 0px 5px;
   width: 24px;
   height: 24px;
+}
+
+.searchBar ul {
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  list-style-type: none;
+  padding: 0px 10px ;
+  margin: 30px 0px 0px 0px;  
+  width: 380px;
+  height: auto;
+}
+
+.searchBar li {
+  margin: 5px 0px;
+}
+
+.searchBar li:hover{
+  background-color: rgb(188, 255, 255);
 }
 
 #location {
@@ -48,14 +78,63 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-color: #000;
-}
-.sunImg {
 }
 
+
 .degree {
-  color: #000;
   font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 150px;
   margin: 50px 0px;
+}
+
+#forecast_days {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 70px;
+  top: 70px;
+}
+
+.forecast_day {
+  margin-bottom: 15px;
+}
+
+.forecast_day:hover {
+  border-radius: 15px;
+  background-color: rgb(217, 253, 241);
+}
+
+.forecast_day_img {
+  width: 80px;
+  height: 80px;
+}
+
+.forecast_day_img_title {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+.forecast_hours {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.forecast_hour {  
+  margin: 0px 25px;
+  display: inline-block;
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.forecast_hour_hour {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.forecast_hour_img {
+  width: 60px;
+  height: 60px;
 }
