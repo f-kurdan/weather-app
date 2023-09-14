@@ -10,7 +10,7 @@ function SearchBar() {
     const onChange = (e) => {
         setInputValue(e.target.value);
         
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${inputValue}&locale=en&types[]=city`)
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${inputValue}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
     }
