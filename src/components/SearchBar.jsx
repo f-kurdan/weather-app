@@ -9,14 +9,14 @@ function SearchBar() {
 
     const onChange = (e) => {
         setInputValue(e.target.value);
+        
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${inputValue}&locale=en&types[]=city`)
+            .then(response => response.json())
+            .then((data) => setCities(data));
+    }
 
-        fetch(`${geoDbUrl}?namePrefix=${inputValue}&sort=-population&limit=10`, geoDbOptions)
-        .then(response => response.json())
-        .then(result => result.data)
-        .then((data) => setCities(data));
+    const getCities = () => {
 
-        console.log(cities);
-        console.log(inputValue);
     }
 
     const onSubmit = () => {
@@ -34,28 +34,11 @@ function SearchBar() {
                 </button>
                 <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
                 <ul>
-                    {cities.length? cities.map(city => <li>{`${city.name}, ${city.country}`}</li>) : cities}
+                    {cities.length ? cities.map(city => <li>{`${city.name}, ${city.country_name}`}</li>) : cities}
                 </ul>
             </form>
         </div>
     )
 }
-
-// function getCities(inputValue) {   
-//         const data = fetch(`${geoDbUrl}?namePrefix=${inputValue}`, geoDbOptions)
-//         .then(response => response.json())
-//         .then(result => result.data)        
-//         .catch(error => alert(error));
-
-//         const getData = () => {
-//             let res = data.then(data => {
-//                 // console.log(data);
-//                 return data;
-//             })  
-//             return res;          
-//         }
-//         console.log(getData())
-//         return getData();
-//     }
 
 export default SearchBar;
