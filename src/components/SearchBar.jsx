@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { geoDbUrl, geoDbOptions } from "../geoDbAPI";
 
 function SearchBar() {
 
@@ -8,15 +7,11 @@ function SearchBar() {
     const [cities, setCities] = useState([]);
 
     const onChange = (e) => {
-        setInputValue(e.target.value);
-        
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${inputValue}&locale=ru&types[]=city`)
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${e.target.value}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
-    }
 
-    const getCities = () => {
-
+        setInputValue(e.target.value);
     }
 
     const onSubmit = () => {
@@ -34,7 +29,9 @@ function SearchBar() {
                 </button>
                 <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
                 <ul>
-                    {cities.length ? cities.map(city => <li>{`${city.name}, ${city.country_name}`}</li>) : cities}
+                    {inputValue ? cities.map(city =>
+                        <li key={city.city_code}>{`${city.name}, ${city.country_name}`}</li>)
+                        : []}
                 </ul>
             </form>
         </div>
