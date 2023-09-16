@@ -14,8 +14,14 @@ function SearchBar() {
         setInputValue(e.target.value);
     }
 
-    const onSubmit = () => {
+    const onClick = () => {
+
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
         setSubmit(inputValue);
+        // здесь должен идти запрос для получения данных о погоде
     }
 
     return (
@@ -30,7 +36,7 @@ function SearchBar() {
                 <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
                 <ul>
                     {inputValue ? cities.map(city =>
-                        <li key={city.city_code}>{`${city.name}, ${city.country_name}`}</li>)
+                        <li onClick={onClick} key={city.city_code}>{`${city.name}, ${city.country_name}`}</li>)
                         : []}
                 </ul>
             </form>
