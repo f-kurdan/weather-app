@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function SearchOptions({ getLocationData, getCity, toShow, cities }) {
+function SearchOptions({ getLocationData, setInputToEmptyString, getCity, cities }) {
     const listRef = useRef(null);
     const onClick = (city) => {
         getCity(city);
@@ -10,8 +10,10 @@ function SearchOptions({ getLocationData, getCity, toShow, cities }) {
     useEffect(() => {
         const onClickOutside = (e) => {
             if (listRef.current && !listRef.current.contains(e.target)) {
-                const results = document.getElementById('resultsList');
-                results.setAttribute("style", "display:none");
+                // const results = document.getElementById('resultsList');
+                // results.setAttribute("style", "display:none");
+                //надо сделать эффект не здесь, а в searchbar
+                setInputToEmptyString();
             }
         };
 
@@ -19,13 +21,13 @@ function SearchOptions({ getLocationData, getCity, toShow, cities }) {
         return () => {
             document.removeEventListener('click', onClickOutside, true);
         };
-    }, [])
+    }, [setInputToEmptyString])
 
-    return toShow ? (
+    return(
         <ul id="resultsList" ref={listRef}>
             {cities.map(city => <li onClick={() => { onClick(city) }} key={city.city_code}>{`${city.name}, ${city.country_name}`}</li>)}
         </ul>
-    ) : null;
+    );
 }
 
 export default SearchOptions;
