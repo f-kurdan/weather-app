@@ -37,8 +37,8 @@ function SearchBar({getLocationData}) {
                 {inputValue? <SearchOptions
                     getCity={getCity}
                     getLocationData={getLocationData}
-                    inputValue={inputValue}
-                    cities={cities} /> : '' }             
+                    toShow={inputValue? true : false}
+                    cities={cities} /> : '' }               
             </form>
         </div>
     )

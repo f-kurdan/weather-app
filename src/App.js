@@ -5,12 +5,15 @@ import SearchBar from './components/search/SearchBar';
 import Temperature from './components/Temperature';
 
 function App() {
-  const [position, setPosition] = useState({});
+  const [intialLocation, setIntialLocation] = useState({});
   const [weatherData, setWeatherData] = useState({});
-  const [currentLocation, setCurrentLocation] = useState({}); 
+  const [location, setLocation] = useState({});
 
   const successCallback = (position) => {
-    setPosition(position);
+    setIntialLocation({ 
+      latitude: position.coords.latitude, 
+      longitude: position.coords.longitude 
+    });
   };
 
   const errorCallback = (error) => {
@@ -20,7 +23,9 @@ function App() {
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
   const getLocationData = (city) => {
-    setCurrentLocation(city);
+    setLocation(city);
+    //здесь нужно будет получит данные по местоположению, потом по выбранному городу или данные по умолчанию(по Москве) если город  не выбран
+    //а еще добавить возможность откатиться к данным по местоположению
     //setWeatherData(city.coordinates);
   }
 
@@ -28,7 +33,7 @@ function App() {
     <div id="App">
       <SearchBar getLocationData={getLocationData} />
       <div id='location'>
-        {currentLocation.name?? 'Moscow'}
+        {location.name ?? 'Moscow'}
       </div>
       <ForecastDays />
       <Temperature />
