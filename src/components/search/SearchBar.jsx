@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchOptions from "./SearchOptions";
 
 function SearchBar({getLocationData}) {
@@ -7,12 +7,16 @@ function SearchBar({getLocationData}) {
     const [submit, setSubmit] = useState('');
     const [cities, setCities] = useState([]);
 
-    const onChange = (e) => {
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${e.target.value}&locale=ru&types[]=city`)
+    useEffect(() => {        
+        const cityName = inputValue.split(', ')[0];
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
+    }, [inputValue])
 
+    const onChange = (e) => {
         setInputValue(e.target.value);
+        console.log(e.target.value);
     }
 
     const onSubmit = (e) => {
@@ -22,7 +26,11 @@ function SearchBar({getLocationData}) {
     }
 
     const getCity = (city) => {
-        setInputValue(`${city.name}, ${city.country_name}`)
+        setInputValue(`${city.name}, ${city.country_name}`);
+    }
+
+    const setInputToEmptyString = () => {
+        setInputValue('');
     }
 
     return (
@@ -35,9 +43,9 @@ function SearchBar({getLocationData}) {
                 </button>
                 <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
                 {inputValue? <SearchOptions
+                    setInputToEmptyString={setInputToEmptyString}
                     getCity={getCity}
                     getLocationData={getLocationData}
-                    toShow={inputValue? true : false}
                     cities={cities} /> : '' }               
             </form>
         </div>
