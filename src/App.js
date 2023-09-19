@@ -70,7 +70,8 @@ function App() {
       </div>
       <ForecastDays />
       <Temperature
-        currentTemperature={weatherData?.current_weather?.temperature?? "--"} />
+        currentTemperature={weatherData?.current_weather?.temperature?? "--"}
+        weathercode={weatherData?.current_weather?.weathercode} />
       <ForecastHours />
     </div>
   );

@@ -1,14 +1,47 @@
 import React from "react";
 
-export default function Temperature({currentTemperature}) {
+export default function Temperature({ currentTemperature, weathercode}) {
     console.log(`inside Temp ${currentTemperature}`)
+    console.log(`weather code: ${weathercode}`)
     return (
         <div className="temperature">
             <p className="degree">{`${currentTemperature}`}°</p>
-            <svg className="sunImg" width="222" height="222" viewBox="0 0 222 222" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="Icon" d="M111 1V23M111 199V221M23 111H1M48.4553 48.4553L32.8989 32.8989M173.545 48.4553L189.101 32.8989M48.4553 173.59L32.8989 189.146M173.545 173.59L189.101 189.146M221 111H199M166 111C166 141.376 141.376 166 111 166C80.6243 166 56 141.376 56 111C56 80.6243 80.6243 56 111 56C141.376 56 166 80.6243 166 111Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            {getImage(weathercode)}
         </div>
     )
+}
+
+function getImage(weathercode) {
+    let src = '';
+    switch (weathercode) {
+        case 1: case 2: case 3:
+            src = "cloud-sun.png";
+            break;
+        case 45: case 48: 
+            src = "fog.png";
+            break;
+        case 51: case 53: case 55: case 56: case 57:
+            src = "drizzle.png"
+            break;
+        case 61: case 63: case 65: case 66: case 67:
+            src = "rain.png"
+            break;
+        case 71: case 73: case 75: case 85: case 86:
+            src = "snowy.png";
+            break;
+        case 77:
+            src = "snow-grain.png";
+            break;
+        case 80: case 81: case 82:
+            src = "shower.png"
+            break;
+        case 95: case 96: case 99:
+            src = "thunderstorm.png"    
+            break; 
+        default: src = "sun.png";
+    }
+
+    return (<img style={{width: "170px", height: "170px"}}  src={src} alt="weather"></img>);
+
 }
 
