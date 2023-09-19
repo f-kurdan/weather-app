@@ -31,10 +31,8 @@ function App() {
             longitude: longitude,
           })
         });
-      
-      //здесь тоже обращаемся за данными о погоде
+      //здесь обращаемся за данными о погоде
       setWeather(latitude, longitude, setWeatherData);
-
     };
 
     const errorCallback = (error) => {
@@ -51,7 +49,7 @@ function App() {
 
     setWeather(latitude, longitude, setWeatherData);
     console.log('зашел в useEffect 2')
-  }, [intialLocation, location])
+  }, [location])
 
   const getLocationData = (city) => {
     setLocation({
@@ -72,16 +70,18 @@ function App() {
       </div>
       <ForecastDays />
       <Temperature
-        currentTemperature={weatherData?.current_weather?.temperature} />
+        currentTemperature={weatherData?.current_weather?.temperature?? "--"} />
       <ForecastHours />
     </div>
   );
 }
 
 function setWeather(latitude, longitude, setWeatherData) {
+  
+  console.log('Сюда зашел вообще')
   fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=Europe%2FMoscow&models=best_match`)
-  .then(respone => respone.json())
-  .then(result => setWeatherData(result));
+    .then(respone => respone.json())
+    .then(result => setWeatherData(result));
 }
 
 export default App;
