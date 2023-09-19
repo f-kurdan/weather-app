@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Temperature(currentTemperature) {
+export default function Temperature({currentTemperature}) {
     console.log(`inside Temp ${currentTemperature}`)
     return (
         <div className="temperature">

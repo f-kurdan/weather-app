@@ -18,20 +18,23 @@ function App() {
   useEffect(() => {
     //#region получаем геолокацию юзера
     const successCallback = (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
       //получаем название города/страны по координатам
-      fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ru`)
+      fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=ru`)
         .then(response => response.json())
         .then(result => {
-          console.log(result.city)
           setIntialLocation({
             name: result.city,
             countryName: result.countryName,
-            latitude: lat,
-            longitude: lon
+            latitude: latitude,
+            longitude: longitude,
           })
         });
+      
+      //здесь тоже обращаемся за данными о погоде
+      setWeather(latitude, longitude, setWeatherData);
+
     };
 
     const errorCallback = (error) => {
@@ -41,31 +44,31 @@ function App() {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     //#endregion
   }, []);
- //может это сделать внутри Temp?
-  useEffect(() => {
-    const latitude = location.latitude ?? intialLocation.latitude;
-    const longitude = location.longitude ?? intialLocation.longitude;
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=Europe%2FMoscow&models=best_match`)
-      .then(respone => respone.json())
-      .then(result => {        
-        setWeatherData(result)
-        console.log(result.current_weather)
-        console.log(`weather is ${weatherData}`)});
 
+  useEffect(() => {
+    const latitude = location.latitude;
+    const longitude = location.longitude;
+
+    setWeather(latitude, longitude, setWeatherData);
+    console.log('зашел в useEffect 2')
   }, [intialLocation, location])
 
   const getLocationData = (city) => {
-    // setLocation(city);
-    //здесь нужно будет получит данные по местоположению, потом по выбранному городу или данные по умолчанию(по Москве) если город  не выбран
-    //а еще добавить возможность откатиться к данным по местоположению
-    //setWeatherData(city.coordinates);
+    setLocation({
+      name: city.name,
+      countryName: city.country_name,
+      latitude: city.coordinates.lat,
+      longitude: city.coordinates.lon,
+    });
   }
+  //а еще добавить возможность откатиться к данным по местоположению
+  //setWeatherData(city.coordinates);
 
   return (
     <div id="App">
       <SearchBar getLocationData={getLocationData} />
       <div id='location'>
-        {location.name ?? intialLocation.name}
+        {`${location.name ?? intialLocation.name}, ${location.countryName ?? intialLocation.countryName}`}
       </div>
       <ForecastDays />
       <Temperature
@@ -73,6 +76,12 @@ function App() {
       <ForecastHours />
     </div>
   );
+}
+
+function setWeather(latitude, longitude, setWeatherData) {
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=Europe%2FMoscow&models=best_match`)
+  .then(respone => respone.json())
+  .then(result => setWeatherData(result));
 }
 
 export default App;
