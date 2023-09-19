@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SearchOptions from "./SearchOptions";
 
-function SearchBar({getLocationData}) {
-
+function SearchBar({ getLocationData }) {
     const [inputValue, setInputValue] = useState('');
     const [submit, setSubmit] = useState('');
     const [cities, setCities] = useState([]);
+    const listRef = useRef(null);
+    const [toShow, setToShow] = useState(true);
 
-    useEffect(() => {        
+    useEffect(() => {
+        //получаем список городов по значению в поисковой строке 
         const cityName = inputValue.split(', ')[0];
         fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
+        //хэндлер для скрытия списка при нажатии вне списка и строки поиска
+        const onClickOutside = (e) => {
+            if (listRef.current && !listRef.current.contains(e.target)) {
+                setToShow(false);
+            }
+        };
+        //подписываем событие на клик, а потом удаляем его при ререндеринге
+        document.addEventListener('click', onClickOutside, true);
+        return () => {
+            document.removeEventListener('click', onClickOutside, true);
+            setToShow(true);
+        };
     }, [inputValue])
 
     const onChange = (e) => {
         setInputValue(e.target.value);
-        console.log(e.target.value);
     }
 
     const onSubmit = (e) => {
@@ -24,17 +37,13 @@ function SearchBar({getLocationData}) {
         setSubmit(inputValue);
         // здесь должен идти запрос для получения данных о погоде
     }
-
+    //коллбэк для получения города из компонента SearchOptions
     const getCity = (city) => {
         setInputValue(`${city.name}, ${city.country_name}`);
     }
 
-    const setInputToEmptyString = () => {
-        setInputValue('');
-    }
-
     return (
-        <div className="searchBar">
+        <div ref={listRef} className="searchBar">
             <form autoComplete="off">
                 <button type="button" onSubmit={onSubmit} >
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none">
@@ -42,11 +51,11 @@ function SearchBar({getLocationData}) {
                     </svg>
                 </button>
                 <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
-                {inputValue? <SearchOptions
-                    setInputToEmptyString={setInputToEmptyString}
+                {inputValue ? <SearchOptions
+                    toShow={toShow}
                     getCity={getCity}
                     getLocationData={getLocationData}
-                    cities={cities} /> : '' }               
+                    cities={cities} /> : ''}
             </form>
         </div>
     )
