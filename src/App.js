@@ -7,8 +7,8 @@ import Temperature from './components/Temperature';
 function App() {
   //по умолчанию передаем Москву
   const [intialLocation, setIntialLocation] = useState({
-    name: "Moscow",
-    countryName: "Russia",
+    name: "Earth",
+    countryName: "Milky Way",
     latitude: 55.755786,
     longitude: 37.617633
   });
