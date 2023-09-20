@@ -48,7 +48,6 @@ function App() {
     const longitude = location.longitude;
 
     setWeather(latitude, longitude, setWeatherData);
-    console.log('зашел в useEffect 2')
   }, [location])
 
   const getLocationData = (city) => {
@@ -78,8 +77,6 @@ function App() {
 }
 
 function setWeather(latitude, longitude, setWeatherData) {
-  
-  console.log('Сюда зашел вообще')
   fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=Europe%2FMoscow&models=best_match`)
     .then(respone => respone.json())
     .then(result => setWeatherData(result));
