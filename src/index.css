@@ -18,25 +18,25 @@ body {
 
 .searchBar form{  
   position: absolute;
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 20px;
   position: sticky;
   display: inline-flex;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 400px;
-  height: auto;
-  margin: 20px 0px;
+  height: 35px;
+  margin: 15px 0px;
   box-shadow: 3px 3px 2px;
 }
 
-.searchBar input {
+.searchBar input {  
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 20px;
   border: hidden;
   background-color: white;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 20px 20px 0px;
   margin: 0px;
   width: 360px;
-  height: 24px;
+  height: auto;
 }
 
 .searchBar button {
@@ -46,7 +46,7 @@ body {
   padding: 0px;
   margin: 0px 10px 0px 5px;
   width: 24px;
-  height: 24px;
+  height: auto;
 }
 
 .searchBar ul {
@@ -138,4 +138,10 @@ body {
 .forecast_hour_img {
   width: 60px;
   height: 60px;
+}
+
+.forecast_hour_degree {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  margin: 50px 0px;
 }
