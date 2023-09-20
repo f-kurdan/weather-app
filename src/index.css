@@ -50,6 +50,8 @@ body {
 }
 
 .searchBar ul {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 20px;
   position: absolute;
   border: 2px solid black;
   border-radius: 10px;
@@ -119,20 +121,27 @@ body {
 }
 
 .forecast_hours {
-  margin-top: 100px;
+  margin-top: 40px;
   text-align: center;
 }
 
 .forecast_hour {  
-  margin: 0px 25px;
+  margin: 0px 15px;
   display: inline-block;
   font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 20px;
 }
 
 .forecast_hour_hour {
+  text-shadow: 1px 1px 1px rgb(57, 238, 254);
+  font-size: 30px;
   display: block;
   margin-bottom: 0px;
+}
+
+.forecast_hour_flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .forecast_hour_img {
@@ -141,7 +150,6 @@ body {
 }
 
 .forecast_hour_degree {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 30px;
-  margin: 50px 0px;
+  font-size: 35px;
+  margin: 20px 0px;
 }

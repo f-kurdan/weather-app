@@ -1,9 +1,9 @@
-export function getImage(weathercode, mini) {
+export function getImage(weathercode, mini, isDay) {
     let src = '';
 
     switch (weathercode) {
         case 1: case 2: case 3:
-            src = "cloud-sun.png";
+            src = isDay? "cloud-sun.png" : "cloud-night.png";
             break;
         case 45: case 48: 
             src = "fog.png";
@@ -26,9 +26,9 @@ export function getImage(weathercode, mini) {
         case 95: case 96: case 99:
             src = "thunderstorm.png"    
             break; 
-        default: src = "sun.png";
+        default: src =  isDay? "sun.png" : "night.png";
     }
 
-    let width, height = mini? "100px" : "170px";       
+    let width, height = mini? "80px" : "170px";       
     return (<img style={{width: width, height: height}}  src={src} alt="weather"></img>);
 }

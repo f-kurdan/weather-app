@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ForecastDays from './components/ForecastDays';
 import ForecastHours from './components/ForecastHours';
 import SearchBar from './components/search/SearchBar';
-import Temperature from './components/Temperature';
+import Temperature from './components/temperature/Temperature';
 
 function App() {
   //по умолчанию передаем Москву
@@ -69,15 +69,18 @@ function App() {
       </div>
       <ForecastDays />
       <Temperature
-        currentTemperature={weatherData?.current_weather?.temperature?? "--"}
-        weathercode={weatherData?.current_weather?.weathercode} />
-      <ForecastHours weatherData={weatherData} />
+        currentTemperature={weatherData?.current_weather?.temperature ?? "--"}
+        weathercode={weatherData?.current_weather?.weathercode}
+        isDay={weatherData?.current_weather?.is_day} />
+      <ForecastHours
+        weatherData={weatherData}
+        isDay={weatherData?.current_weather?.is_day} />
     </div>
   );
 }
 
 function setWeather(latitude, longitude, setWeatherData) {
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=auto&models=best_match`)
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,weathercode&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&current_weather=true&timezone=auto&models=best_match`)
     .then(respone => respone.json())
     .then(result => setWeatherData(result));
 }

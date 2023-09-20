@@ -1,22 +1,22 @@
 import React from "react";
+import { getImage } from "../services/shared";
 
-function ForecastHours({ weatherData }) {
+function ForecastHours({ weatherData, isDay }) {
     let currentTime = weatherData?.current_weather?.time;
-    let timeStamps = weatherData?.hourly?.time;
+    let timeStep = weatherData?.hourly?.time;
     let temps = weatherData?.hourly?.temperature_2m;
-    const nextHourIndex = timeStamps?.indexOf(currentTime) + 1;
-    const timeInterval = timeStamps?.slice(nextHourIndex, nextHourIndex + 10)?.map(e => e.slice(11));
-    console.log(`time interval: ${timeInterval}`)
-    const tempsInterval = temps?.slice(nextHourIndex, nextHourIndex + 10)
-    console.log(tempsInterval)
+    let weathercodes = weatherData?.hourly?.weathercode;
+    const nextHourIndex = timeStep?.indexOf(currentTime) + 1;
+    const next10Hours = timeStep?.slice(nextHourIndex, nextHourIndex + 10)?.map(e => e.slice(11));
+    console.log(`time interval: ${next10Hours}`)
+    const next10HoursTemps = temps?.slice(nextHourIndex, nextHourIndex + 10)
+    console.log(next10HoursTemps)
+    const next10HoursCodes = weathercodes?.slice(nextHourIndex, nextHourIndex + 10);
 
-    let hourlyData;
+    let hourlyData = [];
 
-    if (timeInterval && tempsInterval) {
-        hourlyData = [];
-        for (let i = 0; i < timeInterval?.length; i++) {
-            hourlyData.push([timeInterval[i], tempsInterval[i]])
-        }
+    for (let i = 0; i < next10Hours?.length; i++) {
+        hourlyData.push([next10Hours[i], next10HoursTemps[i], next10HoursCodes[i]])
     }
 
     return (
@@ -24,8 +24,10 @@ function ForecastHours({ weatherData }) {
             {hourlyData?.map(data => (
                 <div className="forecast_hour">
                     <p className="forecast_hour_hour">{data[0] ?? '--'}</p>
-                    <p className="forecast_hour_degree">{data[1] ?? '--' }°</p>
-                    {/* <img src="cloud-sun-02.svg" alt="weather" className="forecast_hour_img" /> */}
+                    <div className="forecast_hour_flexbox">
+                        <p className="forecast_hour_degree">{data[1] ?? '--'}°</p>
+                        {getImage(data[2], true, isDay)}
+                    </div>
                 </div>
             ))}
         </div>
