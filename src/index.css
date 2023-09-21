@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .searchBar form{  
@@ -77,17 +78,21 @@ body {
   margin: 50px 0px 20px;
 }
 
-.temperature {
-  display: inline-flex;
+.temperature-flexbox {
+  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-.degree {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+.temperature-degree {
   font-size: 140px;
   margin: 50px 0px;
+}
+
+.temperature-additional {
+  font-size: 20px;
+  margin-left: 40px ; 
 }
 
 #forecast_days {

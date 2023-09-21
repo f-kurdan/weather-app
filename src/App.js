@@ -68,12 +68,8 @@ function App() {
         {`${location.name ?? intialLocation.name}, ${location.countryName ?? intialLocation.countryName}`}
       </div>
       <ForecastDays />
-      <Temperature
-        currentTemperature={weatherData?.current_weather?.temperature ?? "--"}
-        weathercode={weatherData?.current_weather?.weathercode}
-        isDay={weatherData?.current_weather?.is_day} />
-      <ForecastHours
-        weatherData={weatherData} />
+      <Temperature weatherData={weatherData}/>
+      <ForecastHours weatherData={weatherData} />
     </div>
   );
 }
