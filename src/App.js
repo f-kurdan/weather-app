@@ -75,7 +75,7 @@ function App() {
 }
 
 function setWeather(latitude, longitude, setWeatherData) {
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,uv_index,is_day&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto&models=best_match`)
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,uv_index,is_day,apparent_temperature&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto&models=best_match`)
     .then(respone => respone.json())
     .then(result => setWeatherData(result));
 }

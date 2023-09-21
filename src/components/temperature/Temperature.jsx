@@ -10,7 +10,7 @@ export default function Temperature({ weatherData }) {
         <div className="temperature-flexbox">
             <div className="temperature-degree">{`${currentTemperature}`}°</div>
             {getImage(weathercode, false, isDay)}
-            <AdditionalData />
+            <AdditionalData weatherData={weatherData} />
         </div>
     )
 }
