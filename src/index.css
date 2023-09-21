@@ -95,6 +95,10 @@ body {
   margin-left: 40px ; 
 }
 
+.temperature-additional-unit {
+  margin: 2px 0px;
+}
+
 #forecast_days {
   display: inline-flex;
   flex-direction: column;
