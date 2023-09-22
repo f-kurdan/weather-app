@@ -18,23 +18,28 @@ function ForecastHours({ weatherData }) {
     for (let i = 0; i < next10Hours?.length; i++) {
         //закидываем данные соответсвующие каждому часу в массив
         hourlyData.push([
-            next10Hours[i], 
-            next10HoursTemps[i], 
+            next10Hours[i],
+            next10HoursTemps[i],
             next10HoursCodes[i],
             next10HoursDayOrNight[i]])
     }
     // вытаскиваем данные за каждый час по индексу
     return (
-        <div className="forecast_hours">
-            {hourlyData?.map(data => (
-                <div className="forecast_hour">
-                    <p className="forecast_hour_hour">{data[0] ?? '--'}</p>
-                    <div className="forecast_hour_flexbox">
-                        <p className="forecast_hour_degree">{data[1] ?? '--'}°</p>
-                        {getImage(data[2], true, data[3])}
+        <div>
+
+            <button>назад</button>
+            <div className="forecast_hours">
+                {hourlyData?.map(data => (
+                    <div key={hourlyData.indexOf(data) + data[1]} className="forecast_hour">
+                        <p className="forecast_hour_hour">{data[0] ?? '--'}</p>
+                        <div className="forecast_hour_flexbox">
+                            <p className="forecast_hour_degree">{data[1] ?? '--'}°</p>
+                            {getImage(data[2], true, data[3])}
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
+            <button>вперед</button>
         </div>
     )
 }

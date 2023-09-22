@@ -6,6 +6,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
 }
 
 #App {
@@ -130,8 +131,14 @@ body {
 }
 
 .forecast_hours {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 40px;
   text-align: center;
+  max-width: 800px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .forecast_hour {  
