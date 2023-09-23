@@ -69,6 +69,7 @@ function App() {
       </div>
       <ForecastDays />
       <Temperature weatherData={weatherData}/>
+      <div>Прогноз на следующие 10 часов</div>
       <ForecastHours weatherData={weatherData} />
     </div>
   );
