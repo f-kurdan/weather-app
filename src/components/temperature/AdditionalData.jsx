@@ -2,7 +2,7 @@ import React from "react";
 import { getDescription, getUvIndexDefinition } from "../../services/shared";
 
 export default function AdditionalData({ weatherData }) {
-    const currentTime = weatherData?.current_weather?.time;
+    const currentTime = weatherData?.current_weather?.time?.slice(0, 14) + '00';//нужен именно час без минут
     const timeSteps = weatherData?.hourly?.time; //часы 
     const currentTimeIndex = timeSteps?.indexOf(currentTime);
     const windSpeed = weatherData?.current_weather?.windspeed;
@@ -12,7 +12,7 @@ export default function AdditionalData({ weatherData }) {
     const apparentTemperature = weatherData?.hourly?.apparent_temperature.at(currentTimeIndex);
     const sunrise = weatherData?.daily?.sunrise[0].slice(11);
     const sunset = weatherData?.daily?.sunset[0].slice(11);
-
+    
     return (
         <div className="temperature-additional">
             <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>Погода на {currentTime?.slice(11) ?? '--'}: </div>

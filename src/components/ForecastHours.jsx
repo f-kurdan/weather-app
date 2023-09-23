@@ -2,7 +2,7 @@ import React from "react";
 import { getImage } from "../services/shared";
 
 function ForecastHours({ weatherData }) {
-    const currentTime = weatherData?.current_weather?.time;
+    const currentTime = weatherData?.current_weather?.time?.slice(0, 14) + '00';//нужен именно час без минут
     const timeSteps = weatherData?.hourly?.time; //часы 
     const temps = weatherData?.hourly?.temperature_2m;//температуры
     const weathercodes = weatherData?.hourly?.weathercode;//коды
@@ -14,7 +14,7 @@ function ForecastHours({ weatherData }) {
     const next10HoursCodes = weathercodes?.slice(nextHourIndex, nextHourIndex + 10);//коды на следующие 10 часов
     const next10HoursDayOrNight = daysOrNights?.slice(nextHourIndex, nextHourIndex + 10);//день или начь на следующие 10 часов
 
-    const hourlyData = [];
+    const hourlyData = []; 
     for (let i = 0; i < next10Hours?.length; i++) {
         //закидываем данные соответсвующие каждому часу в массив
         hourlyData.push([
@@ -26,8 +26,6 @@ function ForecastHours({ weatherData }) {
     // вытаскиваем данные за каждый час по индексу
     return (
         <div>
-
-            <button>назад</button>
             <div className="forecast_hours">
                 {hourlyData?.map(data => (
                     <div key={hourlyData.indexOf(data) + data[1]} className="forecast_hour">
@@ -39,7 +37,6 @@ function ForecastHours({ weatherData }) {
                     </div>
                 ))}
             </div>
-            <button>вперед</button>
         </div>
     )
 }

@@ -59,7 +59,6 @@ export function getDescription(weathercode) {
 export function getUvIndexDefinition(uvIndexPoint) {
     let definition = ''
     let color = ''
-    console.log("индекс: " + uvIndexPoint)
     if (uvIndexPoint >= 3 && uvIndexPoint < 6) {
         definition = "Умеренный";
         color = "yellow";
