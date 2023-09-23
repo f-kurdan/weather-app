@@ -1,13 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef} from "react";
 
-function Button() {
+export default function Button({ direction, container, setLeftButtonAppearance, setRightButtonAppearance, visibility }) {
     const buttonRef = useRef();
-    const scroll = () => {
-        buttonRef.current.scrollLeft -= 20
+    const buttonSrc = direction === "left" ? "left-arrow.png" : "right-arrow.png";
+
+    const onClick = () => {
+        if (direction === "left") {
+            container.scrollLeft -= 400;
+            setRightButtonAppearance(true);               
+            setLeftButtonAppearance(container.scrollLeft >= 400)
+        }
+        if (direction === "right") {
+            container.scrollLeft += 350
+            setLeftButtonAppearance(true);
+            console.log(container.scrollLeft)
+            setRightButtonAppearance(container.scrollLeft < 1048);
+        }
     }
-    return (
-        <div onClick={scroll} ref={buttonRef}>
-            <img src="left-arrow.png" alt="scroll-left" />
-        </div>
-    )
+
+    return (<div style={{"visibility": visibility}} onClick={onClick} ref={buttonRef}>
+            <img className="horizontal-scroll-button" src={buttonSrc} alt="scroll-left" />
+        </div>);
 }

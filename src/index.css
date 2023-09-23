@@ -6,7 +6,6 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
 }
 
 #App {
@@ -130,19 +129,24 @@ body {
   text-align: center;
 }
 
-.forecast_hours {
-  display: inline-flex;
+#forecast_hours_container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 100px;
+}
+
+.forecast_hours {
+  display: inline-flex;
+  align-items: center;
   text-align: center;
-  max-width: 800px;
+  width: 800px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .forecast_hour {  
   margin: 0px 15px;
-  display: inline-block;
   font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
 }
 
@@ -150,7 +154,7 @@ body {
   text-shadow: 1px 1px 1px rgb(57, 238, 254);
   font-size: 30px;
   display: block;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 .forecast_hour_flexbox {
@@ -167,4 +171,12 @@ body {
 .forecast_hour_degree {
   font-size: 35px;
   margin: 20px 0px;
+}
+
+.horizontal-scroll-button {
+  width: 80px;
+  height: 80px; 
+}
+.horizontal-scroll-button:hover {
+  cursor: pointer;
 }
