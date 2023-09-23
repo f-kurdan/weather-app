@@ -82,5 +82,5 @@ export function getUvIndexDefinition(uvIndexPoint) {
         "borderRadius": "20px",
         "padding": "0px 5px",
         "display": "inline"
-    }}>{definition}</div>)
+    }}>{uvIndexPoint} - {definition}</div>)
 }
