@@ -12,7 +12,7 @@ export default function AdditionalData({ weatherData }) {
     const apparentTemperature = weatherData?.hourly?.apparent_temperature.at(currentTimeIndex);
     const sunrise = weatherData?.daily?.sunrise[0].slice(11);
     const sunset = weatherData?.daily?.sunset[0].slice(11);
-    
+
     return (
         <div className="temperature-additional">
             <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>Погода на {currentTime?.slice(11) ?? '--'}: </div>
@@ -21,7 +21,9 @@ export default function AdditionalData({ weatherData }) {
             <div className="temperature-additional-unit">Ветер: {windSpeed ?? '--'} км/ч</div>
             <div className="temperature-additional-unit">UV-индекс: {uvIndex ?? '--'}</div>
             <div className="temperature-additional-unit">Влажность: {humidity ?? '--'}%</div>
-            <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>🌅🠅 {sunrise} 🌄🠇 {sunset}</div>
+            <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>
+                🌅🠅 {sunrise} 🌄🠇 {sunset}
+            </div>
         </div>
 
     )
