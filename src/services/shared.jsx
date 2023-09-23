@@ -29,7 +29,7 @@ export function getImage(weathercode, mini, isDay) {
         default: src = isDay ? "sun.png" : "night.png";
     }
 
-    let width, height = mini ? "80px" : "170px";
+    let width, height = mini ? "70px" : "160px";
     return (<img style={{ width: width, height: height }} src={src} alt="weather"></img>);
 }
 
@@ -81,5 +81,5 @@ export function getUvIndexDefinition(uvIndexPoint) {
         "borderRadius": "20px",
         "padding": "0px 5px",
         "display": "inline"
-    }}>{uvIndexPoint} - {definition}</div>)
+    }}>{uvIndexPoint} — {definition}</div>)
 }

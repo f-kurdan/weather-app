@@ -69,7 +69,7 @@ function App() {
       </div>
       <ForecastDays />
       <Temperature weatherData={weatherData}/>
-      <div>Прогноз на следующие 10 часов</div>
+      <div id='houyrly_forecast_title'>ПРОГНОЗ НА СЛЕДУЮЩИЕ 10 ЧАСОВ</div>
       <ForecastHours weatherData={weatherData} />
     </div>
   );

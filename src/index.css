@@ -30,7 +30,7 @@ body {
 }
 
 .searchBar input {  
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 20px;
   border: hidden;
   background-color: white;
@@ -51,7 +51,7 @@ body {
 }
 
 .searchBar ul {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 20px;
   position: absolute;
   border: 2px solid black;
@@ -73,26 +73,27 @@ body {
 }
 
 #location {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 70px;
   margin: 50px 0px 20px;
 }
 
 .temperature-flexbox {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .temperature-degree {
-  font-size: 140px;
+  font-size: 150px;
   margin: 50px 0px;
 }
 
 .temperature-additional {
-  font-size: 20px;
-  margin-left: 40px ; 
+  font-size: 17px;
+  margin-left: 50px ; 
+  margin-bottom: 25px;
 }
 
 .temperature-additional-unit {
@@ -124,16 +125,22 @@ body {
 }
 
 .forecast_day_img_title {
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 16px;
   text-align: center;
+}
+
+#houyrly_forecast_title {
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  text-align: center;
+  margin: 40px 0px 20px;
 }
 
 #forecast_hours_container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 100px;
+  align-items: center;  
 }
 
 .forecast_hours {
@@ -147,7 +154,7 @@ body {
 
 .forecast_hour {  
   margin: 0px 15px;
-  font-family: 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
 }
 
 .forecast_hour_hour {
@@ -179,4 +186,6 @@ body {
 }
 .horizontal-scroll-button:hover {
   cursor: pointer;
+  background-color: rgb(241, 229, 248);
+  border-radius: 30px;
 }

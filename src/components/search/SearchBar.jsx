@@ -3,7 +3,6 @@ import SearchOptions from "./SearchOptions";
 
 function SearchBar({ getLocationData }) {
     const [inputValue, setInputValue] = useState('');
-    const [submit, setSubmit] = useState('');
     const [cities, setCities] = useState([]);
     const listRef = useRef(null);
     const [toShow, setToShow] = useState(true);
@@ -31,12 +30,6 @@ function SearchBar({ getLocationData }) {
     const onChange = (e) => {
         setInputValue(e.target.value);
     }
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        setSubmit(inputValue);
-        // здесь должен идти запрос для получения данных о погоде
-    }
     //коллбэк для получения города из компонента SearchOptions
     const getCity = (city) => {
         setInputValue(`${city.name}, ${city.country_name}`);
@@ -45,12 +38,12 @@ function SearchBar({ getLocationData }) {
     return (
         <div ref={listRef} className="searchBar">
             <form autoComplete="off">
-                <button type="button" onSubmit={onSubmit} >
+                <button type="button" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none">
                         <path d="M14.4808 14.4808L21 21M9.5 16C13.0899 16 16 13.0899 16 9.5C16 5.91015 13.0899 3 9.5 3C5.91015 3 3 5.91015 3 9.5C3 13.0899 5.91015 16 9.5 16Z" stroke="#1B1D1F" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
-                <input onChange={onChange} value={inputValue} type="search" placeholder="City or area" />
+                <input onChange={onChange} value={inputValue} type="search" placeholder="Город или район" />
                 {inputValue ? <SearchOptions
                     toShow={toShow}
                     getCity={getCity}

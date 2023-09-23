@@ -39,8 +39,8 @@ function ForecastHours({ weatherData }) {
     // вытаскиваем данные за каждый час по индексу
     return (
         <div id="forecast_hours_container">
-            <Button 
-                visibility={showLeftButton ? "visible" : "hidden"}
+            <Button
+                opacity={showLeftButton ? 1 : 0.3}
                 setRightButtonAppearance={setRightButtonAppearance}
                 setLeftButtonAppearance={setLeftButtonAppearance}
                 direction={"left"}
@@ -57,7 +57,7 @@ function ForecastHours({ weatherData }) {
                 ))}
             </div>
             <Button
-                visibility={showRightButton ? "visible" : "hidden"}
+                opacity={showRightButton ? 1 : 0.3}
                 setRightButtonAppearance={setRightButtonAppearance}
                 setLeftButtonAppearance={setLeftButtonAppearance}
                 direction={"right"}
