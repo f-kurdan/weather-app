@@ -60,7 +60,6 @@ function App() {
   }
   //а еще добавить возможность откатиться к данным по местоположению
   //setWeatherData(city.coordinates);
-
   return (
     <div id="App">
       <SearchBar getLocationData={getLocationData} />

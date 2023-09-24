@@ -32,9 +32,10 @@ body {
 .searchBar input {  
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 20px;
-  border: hidden;
   background-color: white;
+  border: none;
   border-radius: 0px 20px 20px 0px;
+  outline: none;
   margin: 0px;
   width: 360px;
   height: auto;
@@ -134,7 +135,7 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-align: center;
-  margin: 30px 0px 20px;
+  margin: 40px 0px 20px;
 }
 
 #forecast_hours_container {
@@ -150,6 +151,7 @@ body {
   width: 800px;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  border-radius: 30px;
 }
 
 .forecast_hour {  
@@ -158,8 +160,8 @@ body {
 }
 
 .forecast_hour_hour {
-  text-shadow: 1px 1px 1px rgb(57, 238, 254);
-  font-size: 30px;
+  text-shadow: 2px 2px 1px rgb(57, 238, 254);
+  font-size: 25px;
   display: block;
   margin: 0px;
 }
@@ -184,8 +186,9 @@ body {
   width: 80px;
   height: 80px; 
 }
+
 .horizontal-scroll-button:hover {
   cursor: pointer;
-  background-color: rgb(241, 229, 248);
+  background-color: rgb(255, 211, 253);
   border-radius: 30px;
 }

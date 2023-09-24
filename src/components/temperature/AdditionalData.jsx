@@ -15,14 +15,14 @@ export default function AdditionalData({ weatherData }) {
 
     return (
         <div className="temperature-additional">
-            <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>Погода на {currentTime?.slice(11) ?? '--'}: </div>
+            <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>Погода на {weatherData?.current_weather?.time?.slice(11) ?? '--'}: </div>
             <div className="temperature-additional-unit">{getDescription(weatherData?.current_weather?.weathercode)}</div>
             <div className="temperature-additional-unit">Ощущается как {apparentTemperature ?? '--'}°</div>
             <div className="temperature-additional-unit">Ветер: {windSpeed ?? '--'} км/ч</div>
             <div className="temperature-additional-unit">UV-индекс: {uvIndex ?? '--'}</div>
             <div className="temperature-additional-unit">Влажность: {humidity ?? '--'}%</div>
             <div className="temperature-additional-unit" style={{ "font-weight": "bold" }}>
-                🌅🠅 {sunrise} 🌄🠇 {sunset}
+                🌅🠅 {sunrise}  🌄🠇 {sunset}
             </div>
         </div>
 
