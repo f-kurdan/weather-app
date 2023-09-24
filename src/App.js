@@ -56,6 +56,7 @@ function App() {
       countryName: city.country_name,
       latitude: city.coordinates.lat,
       longitude: city.coordinates.lon,
+   
     });
   }
   //а еще добавить возможность откатиться к данным по местоположению
