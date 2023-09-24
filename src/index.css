@@ -78,12 +78,17 @@ body {
 }
 
 #location {
+  position: relative;
+  width: 900px;
+  border: solid;
   font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 70px;
   margin: 40px 0px 20px;
+  z-index: 0;
 }
 
 .temperature-flexbox {
+  position: relative;
   font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
@@ -109,34 +114,43 @@ body {
 }
 
 #forecast_days {
-  display: inline-flex;
+  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
+  border-style: solid;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: 70px;
-  top: 70px;
+  right: 20px;
+  top: 90px;
+  z-index: 2;
+  background-color: white;
 }
 
 .forecast_day {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 }
 
-.forecast_day:hover {
+.forecast_day_temperature {
+  font-size: 14px;
+}
+
+.forecast_day_name {
+  font-size: 15px;
+  text-align: center;
+}
+
+/* .forecast_day:hover {
   border-radius: 15px;
   background-color: rgb(217, 253, 241);
-}
-
+} */
+/* 
 .forecast_day_img {
   width: 80px;
   height: 80px;
-}
-
-.forecast_day_img_title {
-  font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
+} */
 
 #houyrly_forecast_title {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
@@ -146,6 +160,7 @@ body {
 }
 
 #forecast_hours_container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;  

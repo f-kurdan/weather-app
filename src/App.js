@@ -67,7 +67,7 @@ function App() {
       <div id='location'>
         {`${location.name ?? intialLocation.name}, ${location.countryName ?? intialLocation.countryName}`}
       </div>
-      {/* <ForecastDays /> */}
+      <ForecastDays weatherData={weatherData} />
       <Temperature weatherData={weatherData}/>
       <div id='houyrly_forecast_title'>ПРОГНОЗ НА СЛЕДУЮЩИЕ 10 ЧАСОВ</div>
       <ForecastHours weatherData={weatherData} />
