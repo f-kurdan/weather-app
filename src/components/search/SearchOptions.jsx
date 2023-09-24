@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 function SearchOptions({ getLocationData, toShow, getCity, cities }) {
     const onClick = (city) => {
         //передаем город в SearchBar
@@ -8,9 +6,11 @@ function SearchOptions({ getLocationData, toShow, getCity, cities }) {
         getLocationData(city)
     }
 
-    return toShow? (
+    return toShow ? (
         <ul id="resultsList">
-            {cities.map(city => <li onClick={() => { onClick(city) }} key={city.id}>{`${city.name}, ${city.country_name}`}</li>)}
+            {cities.map(city => <li onClick={() => { onClick(city) }} key={city.id}>
+                {`${city.name}, ${city.country_name}`}
+            </li>)}
         </ul>
     ) : null;
 }

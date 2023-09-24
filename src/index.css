@@ -29,11 +29,15 @@ body {
   box-shadow: 3px 3px 2px;
 }
 
+.searchBar form:hover {
+  box-shadow: 0px 0px 10px 5px rgb(57, 238, 254);
+}
+
 .searchBar input {  
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 20px;
+  border: hidden;
   background-color: white;
-  border: none;
   border-radius: 0px 20px 20px 0px;
   outline: none;
   margin: 0px;
@@ -76,7 +80,7 @@ body {
 #location {
   font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 70px;
-  margin: 50px 0px 20px;
+  margin: 40px 0px 20px;
 }
 
 .temperature-flexbox {
@@ -84,17 +88,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: solid; */
+  height: 127px;
+  margin-top: 50px;
 }
 
 .temperature-degree {
   font-size: 150px;
-  margin: 50px 0px 36px;
+  margin-bottom: -15px;
 }
 
 .temperature-additional {
   font-size: 17px;
   margin-left: 50px ; 
-  margin-bottom: 25px;
+  margin-bottom: 30px;  
 }
 
 .temperature-additional-unit {
@@ -135,7 +142,7 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-align: center;
-  margin: 40px 0px 20px;
+  margin: 130px 0px 20px;
 }
 
 #forecast_hours_container {

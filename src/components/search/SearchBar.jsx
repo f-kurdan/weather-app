@@ -3,6 +3,7 @@ import SearchOptions from "./SearchOptions";
 
 function SearchBar({ getLocationData }) {
     const [inputValue, setInputValue] = useState('');
+    const [submittedValue, setSubmittedValue] = useState('');
     const [cities, setCities] = useState([]);
     const listRef = useRef(null);
     const [toShow, setToShow] = useState(true);
@@ -27,8 +28,27 @@ function SearchBar({ getLocationData }) {
         };
     }, [inputValue])
 
+    //если по значению из submittedValue можно получить данные, передаем их в App
+    useEffect(() => {
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${submittedValue}&locale=ru&types[]=city`)
+            .then(response => response.json())
+            .then((data) => getLocationData(data[0]));
+
+    }, [submittedValue])
+
     const onChange = (e) => {
         setInputValue(e.target.value);
+    }
+
+    const onKeyDown = (e) => {
+        if (e.key === "Enter") {
+            setSubmittedValue(e.target.value)
+            setToShow(false);
+        }
+    }
+    //выключаем перезагрузку страницы при подтверждении формы
+    const onSubmit = (e) => {
+        e.preventDefault();
     }
     //коллбэк для получения города из компонента SearchOptions
     const getCity = (city) => {
@@ -37,13 +57,13 @@ function SearchBar({ getLocationData }) {
 
     return (
         <div ref={listRef} className="searchBar">
-            <form autoComplete="off">
-                <button type="button" >
+            <form onSubmit={onSubmit} autoComplete="off">
+                <button type="submit" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none">
                         <path d="M14.4808 14.4808L21 21M9.5 16C13.0899 16 16 13.0899 16 9.5C16 5.91015 13.0899 3 9.5 3C5.91015 3 3 5.91015 3 9.5C3 13.0899 5.91015 16 9.5 16Z" stroke="#1B1D1F" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
-                <input onChange={onChange} value={inputValue} type="search" placeholder="Город или район" />
+                <input onKeyDown={onKeyDown} onChange={onChange} value={inputValue} type="search" placeholder="Город или район" />
                 {inputValue ? <SearchOptions
                     toShow={toShow}
                     getCity={getCity}
