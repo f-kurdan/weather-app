@@ -30,28 +30,31 @@ function SearchBar({ getLocationData }) {
 
     //если по значению из submittedValue можно получить данные, передаем их в App
     useEffect(() => {
-        const cityNameAndCountryNameArray = submittedValue.split(', ');
-        const cityName = cityNameAndCountryNameArray.at(0).toLowerCase();
-        const countryName = cityNameAndCountryNameArray.at(1)?.toLowerCase();
+        const cityNameAndCountryNameArray = submittedValue.split(', ');//делим строку на город и страну
+        const cityName = cityNameAndCountryNameArray.at(0).toLowerCase();//город
+        const countryName = cityNameAndCountryNameArray.at(1)?.toLowerCase();//страна, если она вообще есть
         fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then(data => {
+                //если страна есть, значит город выбран из списка, а не введен вручную
                 if (cityName && countryName) {
+                    //ищем город в массиве городов
                     const targetCity = data.find(city => 
                         city.name.toLowerCase().includes(cityName)
                         &&  city.country_name.toLowerCase().includes(countryName))
                     getLocationData(targetCity);
                 }
                 else {
+                    //если страны нет, значит просто передаем первый элемент массива городов
                     getLocationData(data[0]);
                 }
             });
     }, [submittedValue])
-
+    
     const onChange = (e) => {
         setInputValue(e.target.value);
     }
-
+    //хэндлер нажатия Enter 
     const onKeyDown = (e) => {
         if (e.key === "Enter") {
             setSubmittedValue(e.target.value)
