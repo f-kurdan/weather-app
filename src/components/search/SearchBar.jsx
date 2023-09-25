@@ -30,10 +30,22 @@ function SearchBar({ getLocationData }) {
 
     //если по значению из submittedValue можно получить данные, передаем их в App
     useEffect(() => {
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${submittedValue}&locale=ru&types[]=city`)
+        const cityNameAndCountryNameArray = submittedValue.split(', ');
+        const cityName = cityNameAndCountryNameArray.at(0).tLowerCase();
+        const countryName = cityNameAndCountryNameArray.at(1)?.toLowerCase();
+        fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
-            .then((data) => getLocationData(data[0]));
-
+            .then(data => {
+                if (countryName) {
+                    const targetCity = data.find(city => 
+                        city.name.toLowerCase() === cityName
+                        &&  city.country_name.toLowerCase() === countryName)
+                    getLocationData(targetCity);
+                }
+                else {
+                    
+                }
+            });
     }, [submittedValue])
 
     const onChange = (e) => {
@@ -52,7 +64,8 @@ function SearchBar({ getLocationData }) {
     }
     //коллбэк для получения города из компонента SearchOptions
     const getCity = (city) => {
-        setInputValue(`${city.name}, ${city.country_name}`);
+        setSubmittedValue(`${city.name}, ${city.country_name}`);    
+        setToShow(false);  
     }
 
     return (
