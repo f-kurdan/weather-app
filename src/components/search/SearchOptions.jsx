@@ -4,8 +4,10 @@ function SearchOptions({ getLocationData, toShow, getCity, cities }) {
         getCity(city);
         //передаем город в App
         getLocationData(city)
+        //скрываем список городов
     }
 
+    console.log(toShow)
     return toShow ? (
         <ul id="resultsList">
             {cities.map(city => <li onClick={() => { onClick(city) }} key={city.id}>

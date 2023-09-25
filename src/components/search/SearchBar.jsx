@@ -31,19 +31,19 @@ function SearchBar({ getLocationData }) {
     //если по значению из submittedValue можно получить данные, передаем их в App
     useEffect(() => {
         const cityNameAndCountryNameArray = submittedValue.split(', ');
-        const cityName = cityNameAndCountryNameArray.at(0).tLowerCase();
+        const cityName = cityNameAndCountryNameArray.at(0).toLowerCase();
         const countryName = cityNameAndCountryNameArray.at(1)?.toLowerCase();
         fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then(data => {
-                if (countryName) {
+                if (cityName && countryName) {
                     const targetCity = data.find(city => 
-                        city.name.toLowerCase() === cityName
-                        &&  city.country_name.toLowerCase() === countryName)
+                        city.name.toLowerCase().includes(cityName)
+                        &&  city.country_name.toLowerCase().includes(countryName))
                     getLocationData(targetCity);
                 }
                 else {
-                    
+                    getLocationData(data[0]);
                 }
             });
     }, [submittedValue])

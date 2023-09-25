@@ -57,7 +57,7 @@ body {
 
 .searchBar ul {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   position: absolute;
   border: 2px solid black;
   border-radius: 10px;
@@ -79,8 +79,10 @@ body {
 
 #location {
   /* position: relative; */
+  width: 900px;
+  text-align: center;
   font-family: 'Unbounded','Anonymous Pro', Arial, Helvetica, sans-serif;
-  font-size: 50px;
+  height: 100px;
   margin: 40px 0px 20px;
   z-index: 0;
 }

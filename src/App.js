@@ -14,6 +14,7 @@ function App() {
   });
   const [weatherData, setWeatherData] = useState({});
   const [location, setLocation] = useState({});
+  const [fontSize, setFontSize] = useState("70px");
 
   useEffect(() => {
     //#region получаем геолокацию юзера
@@ -29,7 +30,19 @@ function App() {
             countryName: result.countryName,
             latitude: latitude,
             longitude: longitude,
-          })
+          });
+
+          const name = `${result.city}, ${result.countryName}`;
+          if(name.length < 16) {            
+            setFontSize("70px");
+          }
+          else if (name.length < 24) {
+            setFontSize("48px")
+          }
+          else {
+            setFontSize("35px")
+          }
+          
         });
       //здесь обращаемся за данными о погоде
       setWeather(latitude, longitude, setWeatherData);
@@ -55,16 +68,26 @@ function App() {
       name: city.name,
       countryName: city.country_name,
       latitude: city.coordinates.lat,
-      longitude: city.coordinates.lon,
-   
+      longitude: city.coordinates.lon,   
     });
+
+    const name = `${city.name}, ${city.country_name}`;
+    if(name.length < 16) {            
+      setFontSize("70px");
+    }
+    else if (name.length < 24) {
+      setFontSize("48px")
+    }
+    else {
+      setFontSize("35px")
+    }
   }
   //а еще добавить возможность откатиться к данным по местоположению
   //setWeatherData(city.coordinates);
   return (
     <div id="App">
       <SearchBar getLocationData={getLocationData} />
-      <div id='location'>
+      <div style={{"fontSize": fontSize}} id='location'>
         {`${location.name ?? intialLocation.name}, ${location.countryName ?? intialLocation.countryName}`}
       </div>
       <ForecastDays weatherData={weatherData} />

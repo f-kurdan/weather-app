@@ -19,7 +19,7 @@ function ForecastDays({ weatherData }) {
             next6daysMinTemps[i]
         ])
     }
-    console.log(weatherData?.daily)
+    
     return (
         <div id="forecast_days">
             {data.map(day => (
