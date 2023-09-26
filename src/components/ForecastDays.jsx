@@ -1,4 +1,5 @@
 import React from "react";
+import { getImage } from "../services/shared";
 
 function ForecastDays({ weatherData }) {
     const next6Days = weatherData?.daily?.time?.slice(1);
@@ -10,28 +11,46 @@ function ForecastDays({ weatherData }) {
     });
     const next6daysMaxTemps = weatherData?.daily?.temperature_2m_max.slice(1);//макс. темпы
     const next6daysMinTemps = weatherData?.daily?.temperature_2m_min.slice(1);//мин. темпы
+    const next6DayCodes = weatherData?.daily?.weathercode?.slice(1);//погодные коды 
 
     const data = [];
     for (let i = 0; i < next6DaysOfWeekNames?.length; i++) {
         data.push([
             next6DaysOfWeekNames[i],
             next6daysMaxTemps[i],
-            next6daysMinTemps[i]
+            next6daysMinTemps[i],
+            next6DayCodes[i]
         ])
     }
-    
+    console.log(next6DayCodes)
     return (
         <div id="forecast_days">
+            <div className="forecast_days_upscroll_button"></div>
             {data.map(day => (
                 <div key={data.indexOf(day)} className="forecast_day">
-                    <div className="forecast_day_temperature">
-                        Max: {day[1]} Min: {day[2]}
+                    <div>
+                        {getImage(day[3], true, true)}
                     </div>
-                    <div className="forecast_day_name">
+                    <div className="forecast_day_temperature">
+                        <div className="max-min-temperature">
+                            <div>
+                                <img className="max-min-img" src="max-temperature.png" alt="" />
+                            </div>
+                            {day[1]}°
+                        </div>
+                        <div className="max-min-temperature">
+                            <div>
+                                <img className="max-min-img" src="min-temperature.png" alt="" />
+                            </div>
+                            {day[2]}°
+                        </div>
+                    </div>
+                    <div style={{"fontSize": day[0].length > 7? "10px" : "16px"}} className="forecast_day_name">
                         {day[0]}
                     </div>
                 </div>
             ))}
+            <div className="forecast_days_downscroll_button"></div>
         </div>
     )
 }

@@ -39,9 +39,9 @@ function SearchBar({ getLocationData }) {
                 //если страна есть, значит город выбран из списка, а не введен вручную
                 if (cityName && countryName) {
                     //ищем город в массиве городов
-                    const targetCity = data.find(city => 
+                    const targetCity = data.find(city =>
                         city.name.toLowerCase().includes(cityName)
-                        &&  city.country_name.toLowerCase().includes(countryName))
+                        && city.country_name.toLowerCase().includes(countryName))
                     getLocationData(targetCity);
                 }
                 else {
@@ -50,7 +50,7 @@ function SearchBar({ getLocationData }) {
                 }
             });
     }, [submittedValue])
-    
+
     const onChange = (e) => {
         setInputValue(e.target.value);
     }
@@ -67,8 +67,8 @@ function SearchBar({ getLocationData }) {
     }
     //коллбэк для получения города из компонента SearchOptions
     const getCity = (city) => {
-        setSubmittedValue(`${city.name}, ${city.country_name}`);    
-        setToShow(false);  
+        setSubmittedValue(`${city.name}, ${city.country_name}`);
+        setToShow(false);
     }
 
     return (

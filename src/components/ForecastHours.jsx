@@ -10,13 +10,13 @@ function ForecastHours({ weatherData }) {
     const currentTime = weatherData?.current_weather?.time?.slice(0, 14) + '00';//нужен именно час без минут
     const timeSteps = weatherData?.hourly?.time; //часы 
     const temps = weatherData?.hourly?.temperature_2m;//температуры
-    const weathercodes = weatherData?.hourly?.weathercode;//коды
+    const weatherCodes = weatherData?.hourly?.weathercode;//коды
     const daysOrNights = weatherData?.hourly?.is_day;//день или ночь по каждому часу
 
     const nextHourIndex = timeSteps?.indexOf(currentTime) + 1;
     const next10Hours = timeSteps?.slice(nextHourIndex, nextHourIndex + 10)?.map(e => e.slice(11));//следующие 10 часов
     const next10HoursTemps = temps?.slice(nextHourIndex, nextHourIndex + 10)//температура на следующие 10 часов
-    const next10HoursCodes = weathercodes?.slice(nextHourIndex, nextHourIndex + 10);//коды на следующие 10 часов
+    const next10HoursCodes = weatherCodes?.slice(nextHourIndex, nextHourIndex + 10);//коды на следующие 10 часов
     const next10HoursDayOrNight = daysOrNights?.slice(nextHourIndex, nextHourIndex + 10);//день или начь на следующие 10 часов
 
     const hourlyData = [];

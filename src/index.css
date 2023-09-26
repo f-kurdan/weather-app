@@ -117,28 +117,49 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   border-style: solid;
   border-radius: 15px;
-  padding: 10px;
+  padding: 2px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: absolute;
-  right: 20px;
-  top: 90px;
+  width: 130px;
+  height: 600px;
+  overflow-y: hidden;
+  right: 27px;
+  top: 60px;
   z-index: 2;
   background-color: white;
 }
 
+#forecast_days:hover  ~ .forecast_days_upscroll_button{
+  visibility: hidden;
+}
+
+.forecast_days_upscroll_button {
+  position: absolute;
+  border-radius: 12px 12px 0px 0px;
+  width: 130px;
+  height: 40px;
+  background-color: rgb(229, 159, 255);
+  opacity: 0.9;
+}
+
 .forecast_day {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .forecast_day_temperature {
   font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .forecast_day_name {
-  font-size: 15px;
   text-align: center;
 }
 
@@ -146,17 +167,25 @@ body {
   border-radius: 15px;
   background-color: rgb(217, 253, 241);
 } */
-/* 
-.forecast_day_img {
-  width: 80px;
-  height: 80px;
-} */
+.max-min-temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 30px;
+}
+
+.max-min-img {
+  width: 35px;
+  height: 35px;
+} 
 
 #houyrly_forecast_title {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-align: center;
-  margin: 150px 0px 20px;
+  margin: 110px 0px 20px;
 }
 
 #forecast_hours_container {
