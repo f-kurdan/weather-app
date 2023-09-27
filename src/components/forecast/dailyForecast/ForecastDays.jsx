@@ -1,5 +1,5 @@
 import React from "react";
-import { getImage } from "../services/shared";
+import { getImage } from "../../../services/shared";
 
 function ForecastDays({ weatherData }) {
     const next6Days = weatherData?.daily?.time?.slice(1);
@@ -22,7 +22,7 @@ function ForecastDays({ weatherData }) {
             next6DayCodes[i]
         ])
     }
-    console.log(next6DayCodes)
+
     return (
         <div id="forecast_days">
             <div className="forecast_days_upscroll_button"></div>
@@ -45,7 +45,7 @@ function ForecastDays({ weatherData }) {
                             {day[2]}°
                         </div>
                     </div>
-                    <div style={{"fontSize": day[0].length > 7? "10px" : "16px"}} className="forecast_day_name">
+                    <div style={{ "fontSize": day[0].length > 7 ? "10px" : "16px" }} className="forecast_day_name">
                         {day[0]}
                     </div>
                 </div>

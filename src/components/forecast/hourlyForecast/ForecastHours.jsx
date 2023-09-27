@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import { getImage } from "../services/shared";
-import Button from "./Button";
+import { getImage } from "../../../services/shared";
+import Button from "./HorizontalScrollButton";
 
 function ForecastHours({ weatherData }) {
     const containerRef = useRef(null);

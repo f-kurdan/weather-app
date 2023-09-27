@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import ForecastDays from './components/ForecastDays';
-import ForecastHours from './components/ForecastHours';
+import ForecastDays from './components/forecast/dailyForecast/ForecastDays'
+import ForecastHours from './components/forecast/hourlyForecast/ForecastHours';
 import SearchBar from './components/search/SearchBar';
 import Temperature from './components/temperature/Temperature';
 
