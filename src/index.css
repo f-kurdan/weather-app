@@ -113,49 +113,52 @@ body {
   margin: 2px 0px;
 }
 
-#forecast_days {
+.forecast_days_container {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  border-style: groove;
-  border-radius: 15px;
-  padding: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  width: 130px;
-  height: 600px;
-  overflow-y: hidden;
   right: 27px;
   top: 60px;
   z-index: 2;
-  background-color: white;
 }
 
-#forecast_days:hover .forecast_days_upscroll_button {
+.forecast_days {  
+  border-style: groove;
+  border-radius: 15px;
+  padding: 2px; 
+  width: 130px;
+  height: 600px;
+  overflow-y: hidden;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+.forecast_days_container:hover .forecast_days_upscroll_button {
   opacity: 0.9;
-  /* transition-timing-function: ease-out; */
 }
 
 .forecast_days_upscroll_button {
   position: absolute;
+  top: 1px;
   border-radius: 12px 12px 0px 0px;
-  width: 130px;
+  width: 135px;
   height: 40px;
   background-color: rgb(0, 221, 255);
   opacity: 0;
   transition: opacity 0.5s;
 }
 
-#forecast_days:hover .forecast_days_downscroll_button {
+.forecast_days_container:hover .forecast_days_downscroll_button {
   opacity: 0.9;
-  /* transition-timing-function: ease-out; */
 }
 
 .forecast_days_downscroll_button {
   position: absolute;
-  bottom: 2px;
+  bottom: 1px;
   border-radius: 0px 0px 12px 12px;
-  width: 130px;
+  width: 135px;
   height: 40px;
   background-color: rgb(0, 221, 255);
   opacity: 0;

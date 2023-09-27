@@ -1,7 +1,10 @@
 import React from "react";
+import { useRef } from "react";
 import { getImage } from "../../../services/shared";
+import VerticalScrollButton from "./VerticalScrollButton";
 
 function ForecastDays({ weatherData }) {
+    const forecastDaysRef = useRef(null);
     const next6Days = weatherData?.daily?.time?.slice(1);
     //получаем название дней на русском
     const next6DaysOfWeekNames = next6Days?.map(date => {
@@ -24,33 +27,39 @@ function ForecastDays({ weatherData }) {
     }
 
     return (
-        <div id="forecast_days">
-            <div className="forecast_days_upscroll_button"></div>
-            {data.map(day => (
-                <div key={data.indexOf(day)} className="forecast_day">
-                    <div>
-                        {getImage(day[3], true, true)}
-                    </div>
-                    <div className="forecast_day_temperature">
-                        <div className="max-min-temperature">
-                            <div>
-                                <img className="max-min-img" src="max-temperature.png" alt="" />
-                            </div>
-                            {day[1]}°
+        <div className="forecast_days_container">
+            <VerticalScrollButton
+                direction={"up"}
+                forecastDaysRef={forecastDaysRef.current} />
+            <div ref={forecastDaysRef} className="forecast_days">
+                {data.map(day => (
+                    <div key={data.indexOf(day)} className="forecast_day">
+                        <div>
+                            {getImage(day[3], true, true)}
                         </div>
-                        <div className="max-min-temperature">
-                            <div>
-                                <img className="max-min-img" src="min-temperature.png" alt="" />
+                        <div className="forecast_day_temperature">
+                            <div className="max-min-temperature">
+                                <div>
+                                    <img className="max-min-img" src="max-temperature.png" alt="" />
+                                </div>
+                                {day[1]}°
                             </div>
-                            {day[2]}°
+                            <div className="max-min-temperature">
+                                <div>
+                                    <img className="max-min-img" src="min-temperature.png" alt="" />
+                                </div>
+                                {day[2]}°
+                            </div>
+                        </div>
+                        <div style={{ "fontSize": day[0].length > 7 ? "10px" : "16px" }} className="forecast_day_name">
+                            {day[0]}
                         </div>
                     </div>
-                    <div style={{ "fontSize": day[0].length > 7 ? "10px" : "16px" }} className="forecast_day_name">
-                        {day[0]}
-                    </div>
-                </div>
-            ))}
-            <div className="forecast_days_downscroll_button"></div>
+                ))}
+            </div>
+            <VerticalScrollButton
+                direction={"down"}
+                forecastDaysRef={forecastDaysRef.current} />
         </div>
     )
 }

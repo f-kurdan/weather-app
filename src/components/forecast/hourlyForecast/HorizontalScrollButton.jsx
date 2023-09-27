@@ -1,7 +1,6 @@
-import React, { useRef} from "react";
+import React from "react";
 
 export default function Button({ direction, container, setLeftButtonAppearance, setRightButtonAppearance, opacity }) {
-    const buttonRef = useRef();
     const buttonSrc = direction === "left" ? "left-arrow.png" : "right-arrow.png";
 
     const onClick = () => {
@@ -18,7 +17,7 @@ export default function Button({ direction, container, setLeftButtonAppearance, 
         }
     }
 
-    return (<div style={{"opacity": opacity}} onClick={onClick} ref={buttonRef}>
+    return (<div style={{"opacity": opacity}} onClick={onClick}>
             <img className="horizontal-scroll-button" src={buttonSrc} alt="scroll-left" />
         </div>);
 }
