@@ -1,10 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import { useRef } from "react";
 import { getImage } from "../../../services/shared";
 import VerticalScrollButton from "./VerticalScrollButton";
 
 function ForecastDays({ weatherData }) {
     const forecastDaysRef = useRef(null);
+    const [showButtonUp, setShowButtonUp] = useState(true);
+    const [showButtonDown, setShowButtonDown] = useState(true);
     const next6Days = weatherData?.daily?.time?.slice(1);
     //получаем название дней на русском
     const next6DaysOfWeekNames = next6Days?.map(date => {
@@ -26,9 +29,20 @@ function ForecastDays({ weatherData }) {
         ])
     }
 
+    const setButtonUpVisibility = (showButton) => {
+        setShowButtonUp(showButton);
+    }
+
+    const setButtonDownVisibility = (showButton) => {
+        setShowButtonDown(showButton);
+    }
+
     return (
         <div className="forecast_days_container">
             <VerticalScrollButton
+                setButtonUpVisibility={setButtonUpVisibility}
+                setButtonDownVisibility={setButtonDownVisibility}
+                opacity={showButtonUp? 0.95 : 0.1}
                 direction={"up"}
                 forecastDaysRef={forecastDaysRef.current} />
             <div ref={forecastDaysRef} className="forecast_days">
@@ -58,6 +72,9 @@ function ForecastDays({ weatherData }) {
                 ))}
             </div>
             <VerticalScrollButton
+                setButtonUpVisibility={setButtonUpVisibility}
+                setButtonDownVisibility={setButtonDownVisibility}
+                opacity={showButtonDown? 0.95 : 0.1}
                 direction={"down"}
                 forecastDaysRef={forecastDaysRef.current} />
         </div>

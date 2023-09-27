@@ -29,10 +29,10 @@ function ForecastHours({ weatherData }) {
             next10HoursDayOrNight[i]])
     }
 
-    const setLeftButtonAppearance = (showButton) => {
+    const setLeftButtonVisibility = (showButton) => {
         setShowLeftButton(showButton);
     }
-    const setRightButtonAppearance = (showButton) => {
+    const setRightButtonVisibility = (showButton) => {
         setShowRightButton(showButton)
     }
 
@@ -41,8 +41,8 @@ function ForecastHours({ weatherData }) {
         <div id="forecast_hours_container">
             <Button
                 opacity={showLeftButton ? 1 : 0.3}
-                setRightButtonAppearance={setRightButtonAppearance}
-                setLeftButtonAppearance={setLeftButtonAppearance}
+                setRightButtonVisibility={setRightButtonVisibility}
+                setLeftButtonVisibility={setLeftButtonVisibility}
                 direction={"left"}
                 container={containerRef.current} />
             <div ref={containerRef} className="forecast_hours">
@@ -58,8 +58,8 @@ function ForecastHours({ weatherData }) {
             </div>
             <Button
                 opacity={showRightButton ? 1 : 0.3}
-                setRightButtonAppearance={setRightButtonAppearance}
-                setLeftButtonAppearance={setLeftButtonAppearance}
+                setRightButtonVisibility={setRightButtonVisibility}
+                setLeftButtonVisibility={setLeftButtonVisibility}
                 direction={"right"}
                 container={containerRef.current} />
         </div>
