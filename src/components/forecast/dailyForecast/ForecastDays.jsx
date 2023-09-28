@@ -46,8 +46,8 @@ function ForecastDays({ weatherData }) {
                 direction={"up"}
                 forecastDaysRef={forecastDaysRef.current} />
             <div ref={forecastDaysRef} className="forecast_days">
-                {data.map(day => (
-                    <div key={data.indexOf(day)} className="forecast_day">
+                {data.map((day, index) => (
+                    <div key={index} className="forecast_day">
                         <div>
                             {getImage(day[3], true, true)}
                         </div>

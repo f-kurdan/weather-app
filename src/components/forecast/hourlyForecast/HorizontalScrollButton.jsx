@@ -17,12 +17,11 @@ export default function Button({
         if (direction === "right") {
             container.scrollLeft += 350
             setLeftButtonVisibility(true);
-            console.log(container.scrollLeft)
             setRightButtonVisibility(container.scrollLeft < 698);
         }
     }
 
     return (<div style={{"opacity": opacity}} onClick={onClick}>
-            <img className="horizontal-scroll-button" src={buttonSrc} alt="scroll-left" />
+            <img className="horizontal-scroll-button" src={buttonSrc} alt="scroll" />
         </div>);
 }

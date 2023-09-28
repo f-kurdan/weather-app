@@ -46,8 +46,8 @@ function ForecastHours({ weatherData }) {
                 direction={"left"}
                 container={containerRef.current} />
             <div ref={containerRef} className="forecast_hours">
-                {hourlyData?.map(data => (
-                    <div key={hourlyData.indexOf(data)} className="forecast_hour">
+                {hourlyData?.map((data, index )=> (
+                    <div key={index} className="forecast_hour">
                         <p className="forecast_hour_hour">{data[0] ?? '--'}</p>
                         <div className="forecast_hour_flexbox">
                             <p className="forecast_hour_degree">{data[1] ?? '--'}°</p>

@@ -10,12 +10,12 @@ export default function VerticalScrollButton({
         "forecast_days_upscroll_button" : "forecast_days_downscroll_button";
     const onClick = () => {
         console.log("зашел в хэндлер")
-        if (direction === "up") {
+        if (direction === "up" && forecastDaysRef) {
             forecastDaysRef.scrollTop -= 250;
             setButtonDownVisibility(true);
             setButtonUpVisibility(forecastDaysRef.scrollTop >= 496);
         }
-        else {
+        else if (direction === "down" && forecastDaysRef) {
             forecastDaysRef.scrollTop += 250;
             setButtonUpVisibility(true);
             setButtonDownVisibility(forecastDaysRef.scrollTop < 249);
