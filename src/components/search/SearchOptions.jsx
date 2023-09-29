@@ -7,7 +7,7 @@ function SearchOptions({ getLocationData, toShow, getCity, cities }) {
         //скрываем список городов
     }
 
-    return toShow ?? (
+    return toShow && (
         <ul id="resultsList">
             {cities.map(city => <li onClick={() => { onClick(city) }} key={city.id}>
                 {`${city.name}, ${city.country_name}`}
