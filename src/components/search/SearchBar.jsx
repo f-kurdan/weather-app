@@ -9,21 +9,11 @@ function SearchBar({ getLocationData }) {
     const [toShow, setToShow] = useState(true);
 
     useEffect(() => {
-        const inputData = localStorage.getItem('WEATHER_APP_INPUT_STATE')
-        if (inputData) {
-            setToShow(false);
-            setInputValue(inputData);
-        }
-    }, [])
-
-    useEffect(() => {
         //получаем список городов по значению в поисковой строке 
         const cityName = inputValue.split(', ')[0];
         fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
-
-        localStorage.setItem('WEATHER_APP_INPUT_STATE', inputValue)
         //хэндлер для скрытия списка при нажатии вне списка и строки поиска
         const onClickOutside = (e) => {
             if (listRef.current && !listRef.current.contains(e.target)) {
@@ -53,8 +43,6 @@ function SearchBar({ getLocationData }) {
                         city.name.toLowerCase().includes(cityName)
                         && city.country_name.toLowerCase().includes(countryName))
                     getLocationData(targetCity);
-                    setToShow(false);                
-                    setInputValue(`${targetCity.name}, ${targetCity.country_name}`);    
                 }
                 else {
                     //если страны нет, значит просто передаем первый элемент массива городов
