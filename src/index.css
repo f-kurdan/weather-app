@@ -278,5 +278,20 @@ body {
 }
 
 @media all and (max-width: 800px) {
-  .forecast_days_container  { display: none; }
+  .forecast_days_container  { 
+    display: none; 
+  }
+
+  #App {
+    -webkit-transform: scale(.4);
+    -moz-transform: scale(.6);
+    transform: scale(.6);
+  } 
+
+  #location {
+    margin-bottom: 100px;
+  }
+
+  .temperature-flexbox {
+  }
 }
