@@ -276,3 +276,7 @@ body {
   background-color: rgb(255, 211, 253);
   border-radius: 30px;
 }
+
+@media all and (max-width: 800px) {
+  .forecast_days_container  { display: none; }
+}

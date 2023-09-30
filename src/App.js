@@ -21,7 +21,6 @@ function App() {
     const parsedLocationData = JSON.parse(locationData);
     if (parsedLocationData) {
       setLocation(parsedLocationData);
-      setWeather(parsedLocationData?.latitude, parsedLocationData?.longitude, setWeatherData);
     } else {      
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
