@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ForecastDays from './components/forecast/dailyForecast/ForecastDays'
 import ForecastHours from './components/forecast/hourlyForecast/ForecastHours';
 import SearchBar from './components/search/SearchBar';
@@ -62,7 +62,7 @@ function App() {
     setLocationNameFontSize(name, setFontSize);
   }, [location])
 
-  const getLocationData = (cityData) => {
+  const getLocationData = useCallback((cityData) => {
     if (cityData?.name + cityData?.country_name !== initialLocation.name + initialLocation.countryName) {
       const city = {
         name: cityData?.name,
@@ -74,7 +74,7 @@ function App() {
       localStorage.setItem("WEATHER_APP_LOCATION_STATE", JSON.stringify(city));
       setLocation(city);
     }
-  }
+  }, [])
   //а еще добавить возможность откатиться к данным по местоположению
   //setWeatherData(city.coordinates);
   return (
@@ -83,7 +83,10 @@ function App() {
       <div style={{"fontSize": fontSize}} id='location'>
         {`${location.name ?? initialLocation.name}, ${location.countryName ?? initialLocation.countryName}`}
       </div>
-      <ForecastDays weatherData={weatherData} />
+      <ForecastDays 
+        weatherData={weatherData}
+        location={`${location.name ?? initialLocation.name}, ${location.countryName ?? initialLocation.countryName}`}
+      />
       <Temperature weatherData={weatherData}/>
       <div id='houyrly_forecast_title'>ПРОГНОЗ НА СЛЕДУЮЩИЕ 10 ЧАСОВ</div>
       <ForecastHours weatherData={weatherData} />

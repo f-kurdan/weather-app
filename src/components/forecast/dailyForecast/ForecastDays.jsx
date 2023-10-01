@@ -6,7 +6,7 @@ import VerticalScrollButton from "./VerticalScrollButton";
 
 function ForecastDays({ weatherData }) {
     const forecastDaysRef = useRef(null);
-    const [showButtonUp, setShowButtonUp] = useState(false);
+    const [showButtonUp, setShowButtonUp] = useState(true);
     const [showButtonDown, setShowButtonDown] = useState(true);
     const next6Days = weatherData?.daily?.time?.slice(1);
     //получаем название дней на русском

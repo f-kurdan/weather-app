@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, memo } from "react";
 import SearchOptions from "./SearchOptions";
 
-function SearchBar({ getLocationData }) {
+const SearchBar = memo(function SearchBar({ getLocationData }) {
     const [inputValue, setInputValue] = useState('');
     const [submittedValue, setSubmittedValue] = useState('');
     const [cities, setCities] = useState([]);
@@ -90,6 +90,6 @@ function SearchBar({ getLocationData }) {
             </form>
         </div>
     )
-}
+})
 
 export default SearchBar;
