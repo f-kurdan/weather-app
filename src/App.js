@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import ForecastDays from './components/forecast/dailyForecast/ForecastDays'
 import ForecastHours from './components/forecast/hourlyForecast/ForecastHours';
 import SearchBar from './components/search/SearchBar';
@@ -15,15 +15,9 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
   const [location, setLocation] = useState({});
   const [fontSize, setFontSize] = useState("70px");
-
+  const initialLocationRef = useRef(null);
+  
   useEffect(() => {
-    const locationData = localStorage.getItem("WEATHER_APP_LOCATION_STATE");
-    const parsedLocationData = JSON.parse(locationData);
-    if (parsedLocationData) {
-      setLocation(parsedLocationData);
-    } else {      
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    }
     //#region получаем геолокацию юзера
     const successCallback = (position) => {
       const latitude = position.coords.latitude;
@@ -40,7 +34,7 @@ function App() {
           });
 
           const name = `${result.city}, ${result.countryName}`;
-          setLocationNameFontSize(name, setFontSize);          
+          setLocationNameFontSize(name, setFontSize);
         });
       //здесь обращаемся за данными о погоде
       setWeather(latitude, longitude, setWeatherData);
@@ -50,6 +44,14 @@ function App() {
       console.log(error);
     };
     //#endregion
+
+    const locationData = localStorage.getItem("WEATHER_APP_LOCATION_STATE");
+    const parsedLocationData = JSON.parse(locationData);
+    if (parsedLocationData) {
+      setLocation(parsedLocationData);
+    } else {      
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    }
   }, []);
 
   useEffect(() => {
@@ -62,8 +64,9 @@ function App() {
     setLocationNameFontSize(name, setFontSize);
   }, [location])
 
+  initialLocationRef.current = initialLocation;
   const getLocationData = useCallback((cityData) => {
-    if (cityData?.name + cityData?.country_name !== initialLocation.name + initialLocation.countryName) {
+    if (cityData?.name + cityData?.country_name !== initialLocationRef.name + initialLocationRef.countryName) {
       const city = {
         name: cityData?.name,
         countryName: cityData?.country_name,
