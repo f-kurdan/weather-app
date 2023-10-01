@@ -125,7 +125,8 @@ body {
 }
 
 .forecast_days {  
-  border-style: groove;
+  border-style: solid;
+  border-width: 1px;
   border-radius: 15px;
   padding: 2px; 
   width: 130px;
@@ -138,32 +139,33 @@ body {
 
 .forecast_days_upscroll_button {
   position: absolute;
-  top: 1px;
-  border-radius: 12px 12px 0px 0px;
+  top: -0.5px;
+  border-radius: 15px 15px 0px 0px;
   width: 135px;
   height: 40px;
   background-color: rgb(231, 176, 255);
   opacity: 0;
   transition: opacity 0.5s;
 }
-
-/* .forecast_days_container:hover .forecast_days_upscroll_button {
-  opacity: 0.9;
-}
-.forecast_days_container:hover .forecast_days_downscroll_button {
-  opacity: 0.9;
-} */
 
 .forecast_days_downscroll_button {
   position: absolute;
-  bottom: 1px;
-  border-radius: 0px 0px 12px 12px;
+  bottom: -1px;
+  border-radius: 0px 0px 15px 15px;
   width: 135px;
   height: 40px;
   background-color: rgb(231, 176, 255);
   opacity: 0;
   transition: opacity 0.5s;
 }
+
+.forecast_days_upscroll_button:hover {
+  cursor: pointer;
+}
+
+.forecast_days_downscroll_button:hover {
+  cursor: pointer;
+} 
 
 .up_down_arrow {
   height: inherit;
@@ -277,21 +279,22 @@ body {
   border-radius: 30px;
 }
 
-@media all and (max-width: 800px) {
+@media screen and (max-width: 350px) {
   .forecast_days_container  { 
     display: none; 
   }
 
   #App {
     -webkit-transform: scale(.4);
-    -moz-transform: scale(.6);
-    transform: scale(.6);
+    -moz-transform: scale(.4);
+    transform: scale(.4);
   } 
 
   #location {
-    margin-bottom: 100px;
+    min-height: 200px;
   }
 
-  .temperature-flexbox {
+  .temperature-additional {
+    min-width: 250px;
   }
 }

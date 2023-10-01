@@ -26,10 +26,10 @@ export default function VerticalScrollButton({
         <div style={{ "opacity": opacity }} onClick={onClick} className={buttonClass}>
             {direction === "up" ?
                 (<div className="up_down_arrow">
-                    назад
+                    вверх
                 </div>) :
                 (<div className="up_down_arrow">
-                    вперед
+                    вниз
                 </div>)}
         </div>
     )
