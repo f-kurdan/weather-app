@@ -42,11 +42,13 @@ function SearchBar({ getLocationData }) {
                     const targetCity = data.find(city =>
                         city.name.toLowerCase().includes(cityName)
                         && city.country_name.toLowerCase().includes(countryName))
-                    getLocationData(targetCity);
+                    if (targetCity)
+                        getLocationData(targetCity);
                 }
                 else {
                     //если страны нет, значит просто передаем первый элемент массива городов
-                    getLocationData(data[0]);
+                    if (data[0])
+                        getLocationData(data[0]);
                 }
             });
     }, [submittedValue])
