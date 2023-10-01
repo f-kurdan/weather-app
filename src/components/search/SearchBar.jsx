@@ -51,7 +51,7 @@ const SearchBar = memo(function SearchBar({ getLocationData }) {
                         getLocationData(data[0]);
                 }
             });
-    }, [submittedValue])
+    }, [submittedValue, getLocationData])
 
     const onChange = (e) => {
         setInputValue(e.target.value);

@@ -90,6 +90,7 @@ function getDayOfWeekName(dateCode, isTomorrow) {
         case 4: return isTomorrow ? "Завтра" : "Четверг";
         case 5: return isTomorrow ? "Завтра" : "Пятница";
         case 6: return isTomorrow ? "Завтра" : "Суббота";
+        default: return "";
     }
 }
 
