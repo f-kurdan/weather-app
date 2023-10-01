@@ -1,11 +1,7 @@
 body {
-  background-image: url(/public/stylish-halftone-hexagon-flow-background.zip);
+  /* background-image: url(/public/stylish_halftone_in_hexagon_flow_background.jpg); */
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 99%;
 }
 
 #App {
@@ -17,8 +13,12 @@ body {
   flex-wrap: wrap;
 }
 
+.searchBar {
+  display: block;
+}
+
 .searchBar form {
-  position: sticky;
+  position: relative;
   display: inline-flex;
   border: 2px solid black;
   border-radius: 20px;
@@ -27,6 +27,7 @@ body {
   margin: 15px 0px;
   box-shadow: 3px 3px 2px;
   z-index: 1;
+  transition: box-shadow 0.5s;
 }
 
 .searchBar form:hover {
@@ -79,7 +80,7 @@ body {
 
 #location {
   /* position: relative; */
-  width: 900px;
+  width: 100%;
   text-align: center;
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   height: 100px;
@@ -280,9 +281,25 @@ body {
 }
 
 /* tablet style */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .forecast_days_container  { 
     display: none; 
+  }
+
+  .temperature-flexbox {
+    flex-wrap: wrap;
+  }
+
+  #location {
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    transform: scale(.7);
+  }
+  #forecast_hours_container {
+    position: relative;
+    -webkit-transform: scale(.5);
+    -moz-transform: scale(.5);
+    transform: scale(.5);
   }
 }
 
