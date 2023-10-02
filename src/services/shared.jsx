@@ -30,7 +30,7 @@ export function getImage(weathercode, mini, isDay) {
     }
 
     let width, height = mini ? "70px" : "160px";
-    return (<img style={{ width: width, height: height }} src={src} alt="weather"></img>);
+    return (<img className={"weather-image"} style={{ width: width, height: height }} src={src} alt="weather"></img>);
 }
 
 export function getDescription(weathercode) {

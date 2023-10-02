@@ -1,6 +1,8 @@
 body {
   /* background-image: url(/public/stylish_halftone_in_hexagon_flow_background.jpg); */
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 99%;
 }
 
@@ -14,7 +16,7 @@ body {
 }
 
 .searchBar {
-  display: block;
+  /* display: block; */
 }
 
 .searchBar form {
@@ -125,11 +127,11 @@ body {
   z-index: 2;
 }
 
-.forecast_days {  
+.forecast_days {
   border-style: solid;
   border-width: 1px;
   border-radius: 15px;
-  padding: 2px; 
+  padding: 2px;
   width: 130px;
   height: 600px;
   overflow-y: hidden;
@@ -166,7 +168,7 @@ body {
 
 .forecast_days_downscroll_button:hover {
   cursor: pointer;
-} 
+}
 
 .up_down_arrow {
   height: inherit;
@@ -280,14 +282,28 @@ body {
   border-radius: 30px;
 }
 
+@media screen and (max-width: 1150px) {
+  .forecast_days_container {
+    display: none;
+  }
+}
+
 /* tablet style */
 @media screen and (max-width: 900px) {
-  .forecast_days_container  { 
-    display: none; 
+  #App {
+    flex-direction: initial;
+  }
+
+  .forecast_days_container {
+    display: none;
   }
 
   .temperature-flexbox {
     flex-wrap: wrap;
+    margin-top: 20px;
+    -webkit-transform: scale(.8);
+    -moz-transform: scale(.8);
+    transform: scale(.8);
   }
 
   #location {
@@ -295,31 +311,77 @@ body {
     -moz-transform: scale(.7);
     transform: scale(.7);
   }
+
+  #houyrly_forecast_title {
+    margin-top: 200px;
+    margin-bottom: 5px;
+  }
+
   #forecast_hours_container {
     position: relative;
-    -webkit-transform: scale(.5);
-    -moz-transform: scale(.5);
-    transform: scale(.5);
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    transform: scale(.7);
   }
 }
 
-/* mobile style */
-@media screen and (max-width: 350px) {
-  .forecast_days_container  { 
-    display: none; 
+@media screen and (max-width: 750px) {
+  #houyrly_forecast_title {
+    margin-top: 200px;
+    margin-bottom: 0px;
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    transform: scale(.7);
   }
 
-  #App {
-    -webkit-transform: scale(.4);
-    -moz-transform: scale(.4);
-    transform: scale(.4);
-  } 
+  #forecast_hours_container {
+    width: 750px;
+    -webkit-transform: scale(.6);
+    -moz-transform: scale(.6);
+    transform: scale(.6);
+  }
+
+  .forecast_hour {
+    flex-shrink: 2;
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    transform: scale(.9);
+    margin: 10px 0px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .searchBar {
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    transform: scale(.7);
+  }
+
+  .searchBar ul {
+    z-index: 5;
+  }
 
   #location {
-    min-height: 200px;
+    margin-top: 20px;
   }
 
   .temperature-additional {
-    min-width: 250px;
+    margin-bottom: 0px;
+  }
+
+  .temperature-degree {
+    font-size: 110px;
+  }
+
+  #houyrly_forecast_title {
+    margin-top: 250px;
+    margin-bottom: 0px;
+  }
+
+  #forecast_hours_container {
+    width: 740px;
+    -webkit-transform: scale(.5);
+    -moz-transform: scale(.5);
+    transform: scale(.5);
   }
 }
