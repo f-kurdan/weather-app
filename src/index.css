@@ -82,7 +82,7 @@ body {
 
 #location {
   /* position: relative; */
-  width: 100%;
+  width: 1000px;
   text-align: center;
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   height: 100px;
