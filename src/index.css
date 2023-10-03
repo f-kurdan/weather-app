@@ -25,9 +25,6 @@ body {
   flex-wrap: wrap;
 }
 
-.searchBar {
-}
-
 .searchBar form {
   background-color: white;
   position: relative;
@@ -38,7 +35,7 @@ body {
   height: 35px;
   margin: 15px 0px;
   box-shadow: 3px 3px 2px;
-  z-index: 1;
+  z-index: 4;
   transition: box-shadow 0.5s;
 }
 

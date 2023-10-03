@@ -11,7 +11,7 @@ const SearchBar = memo(function SearchBar({ getLocationData }) {
     useEffect(() => {
         //получаем список городов по значению в поисковой строке 
         const cityName = inputValue.split(', ')[0];
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
+        fetch(`https://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then((data) => setCities(data));
         //хэндлер для скрытия списка при нажатии вне списка и строки поиска
@@ -33,7 +33,7 @@ const SearchBar = memo(function SearchBar({ getLocationData }) {
         const cityNameAndCountryNameArray = submittedValue.split(', ');//делим строку на город и страну
         const cityName = cityNameAndCountryNameArray.at(0).toLowerCase();//город
         const countryName = cityNameAndCountryNameArray.at(1)?.toLowerCase();//страна, если она вообще есть
-        fetch(`http://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
+        fetch(`https://autocomplete.travelpayouts.com/places2?term=${cityName}&locale=ru&types[]=city`)
             .then(response => response.json())
             .then(data => {
                 //если страна есть, значит город выбран из списка, а не введен вручную
