@@ -294,8 +294,12 @@ body {
 }
 
 @media screen and (max-width: 1150px) {
-  .forecast_days_container {
+  .forecast_days_flexbox {
     display: none;
+  }
+
+  .forecast_days {
+    opacity: 1;
   }
 
   .background-img {
