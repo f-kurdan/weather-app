@@ -15,7 +15,7 @@ export default function Button({
             setLeftButtonVisibility(container.scrollLeft >= 400)
         }
         if (direction === "right") {
-            container.scrollLeft += 350
+            container.scrollLeft += 400
             setLeftButtonVisibility(true);
             setRightButtonVisibility(container.scrollLeft < 698);
         }
