@@ -13,7 +13,7 @@ body {
   max-width: 100%;
   max-height: 100vh;
   z-index: 0;
-  opacity: 0.06;
+  opacity: 0.2;
 }
 
 #App {
@@ -130,7 +130,7 @@ body {
   margin: 2px 0px;
 }
 
-.forecast_days_container {
+.forecast_days_flexbox {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
@@ -150,6 +150,7 @@ body {
   height: 600px;
   overflow-y: hidden;
   background-color: white;
+  opacity: 0.8;
   scroll-behavior: smooth;
 }
 
@@ -161,7 +162,7 @@ body {
   width: 135.5px;
   height: 40px;
   background-color: rgb(231, 176, 255);
-  opacity: 0;
+  z-index: 6;
   transition: opacity 0.5s;
 }
 
@@ -172,7 +173,7 @@ body {
   width: 135.5px;
   height: 40px;
   background-color: rgb(231, 176, 255);
-  opacity: 0;
+  z-index: 6;
   transition: opacity 0.5s;
 }
 

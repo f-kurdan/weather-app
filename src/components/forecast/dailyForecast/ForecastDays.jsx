@@ -38,7 +38,7 @@ function ForecastDays({ weatherData }) {
     }
 
     return (
-        <div className="forecast_days_container">
+        <div className="forecast_days_flexbox">
             <VerticalScrollButton
                 setButtonUpVisibility={setButtonUpVisibility}
                 setButtonDownVisibility={setButtonDownVisibility}
