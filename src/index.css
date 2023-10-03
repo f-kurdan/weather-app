@@ -3,7 +3,17 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 99%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.background-img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100vh;
+  z-index: 0;
+  opacity: 0.07;
 }
 
 #App {
@@ -87,18 +97,17 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   height: 100px;
   margin: 40px 0px 20px;
-  z-index: 0;
+  z-index: 1;
 }
 
 .temperature-flexbox {
   position: relative;
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
-  align-items: center;
-  /* border: solid; */
+  align-items: baseline;
   height: 127px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .temperature-degree {
@@ -106,10 +115,15 @@ body {
   margin-bottom: -15px;
 }
 
+.temperature-degree:hover {
+  transform: rotate(360deg);
+}
+
 .temperature-additional {
+  align-self: stretch;
   font-size: 17px;
   margin-left: 50px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .temperature-additional-unit {
@@ -198,10 +212,6 @@ body {
   font-weight: bold;
 }
 
-/* .forecast_day:hover {
-  border-radius: 15px;
-  background-color: rgb(217, 253, 241);
-} */
 .max-min-temperature {
   display: flex;
   flex-direction: column;
@@ -221,7 +231,7 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-align: center;
-  margin: 110px 0px 20px;
+  margin: 130px 0px 20px;
 }
 
 #forecast_hours_container {
@@ -284,6 +294,10 @@ body {
 
 @media screen and (max-width: 1150px) {
   .forecast_days_container {
+    display: none;
+  }
+
+  .background-img {
     display: none;
   }
 }
