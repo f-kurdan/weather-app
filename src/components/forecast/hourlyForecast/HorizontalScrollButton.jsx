@@ -10,12 +10,12 @@ export default function Button({
 
     const onClick = () => {
         if (direction === "left") {
-            container.scrollLeft -= 410;
+            container.scrollLeft -= 390;
             setRightButtonVisibility(true);               
-            setLeftButtonVisibility(container.scrollLeft >= 400)
+            setLeftButtonVisibility(container.scrollLeft >= 390)
         }
         if (direction === "right") {
-            container.scrollLeft += 410
+            container.scrollLeft += 390
             setLeftButtonVisibility(true);
             setRightButtonVisibility(container.scrollLeft < 698);
         }
