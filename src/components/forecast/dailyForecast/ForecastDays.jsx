@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { getImage } from "../../../services/shared";
+import { getImage } from "../../../utilities/shared";
 import VerticalScrollButton from "./VerticalScrollButton";
 
 function ForecastDays({ weatherData }) {

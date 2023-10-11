@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { getImage } from "../../../services/shared";
+import { getImage } from "../../../utilities/shared";
 import Button from "./HorizontalScrollButton";
 
 function ForecastHours({ weatherData }) {

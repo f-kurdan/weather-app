@@ -1,5 +1,5 @@
 import React from "react";
-import { getImage } from "../../services/shared";
+import { getImage } from "../../utilities/shared";
 import AdditionalData from "./AdditionalData";
 
 export default function Temperature({ weatherData }) {

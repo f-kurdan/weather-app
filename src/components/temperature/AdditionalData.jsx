@@ -1,5 +1,5 @@
 import React from "react";
-import { getDescription, getUvIndexDefinition } from "../../services/shared";
+import { getDescription, getUvIndexDefinition } from "../../utilities/shared";
 
 export default function AdditionalData({ weatherData }) {
     const currentTime = weatherData?.current_weather?.time?.slice(0, 14) + '00';//нужен именно час без минут
