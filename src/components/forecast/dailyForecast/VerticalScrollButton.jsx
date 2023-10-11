@@ -9,7 +9,6 @@ export default function VerticalScrollButton({
     const buttonClass = direction === "up" ?
         "forecast_days_upscroll_button" : "forecast_days_downscroll_button";
     const onClick = () => {
-        console.log("зашел в хэндлер")
         if (direction === "up" && forecastDaysRef) {
             forecastDaysRef.scrollTop -= 250;
             setButtonDownVisibility(true);
