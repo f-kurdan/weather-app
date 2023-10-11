@@ -102,8 +102,8 @@ body {
   font-family: 'Unbounded', 'Anonymous Pro', Arial, Helvetica, sans-serif;
   display: inline-flex;
   justify-content: center;
-  align-items: baseline;
-  height: 127px;
+  align-items: center;
+  height: 190px;
   margin-top: 30px;
 }
 
