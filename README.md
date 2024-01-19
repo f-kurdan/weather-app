@@ -17,5 +17,5 @@ https://support.travelpayouts.com
 and from https://www.bigdatacloud.com
 Weather data is taken from https://open-meteo.com.
 
-TO RUN: npm start run
+TO RUN: npm run
 
