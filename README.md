@@ -1,4 +1,4 @@
-Мой обычный сайтик с погодой, который я сосздал как пет-проект.
+Сайт с информацией о погоде с прогнозом.
 This is my Weather App. Nothing special or incredibly creative, just a decent weather app as it should be.
 
 [Можно попробовать здесь](https://wezza.vercel.app/)
